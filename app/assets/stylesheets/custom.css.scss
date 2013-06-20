@@ -1,0 +1,163 @@
+/*Reset CSS setting*/
+html, body, span, div, h1, h2, h3, h4, strong,
+ol, ul, li {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+vertical-align: baseline;
+background: transparent;
+}
+
+body {
+font-size: 100%;
+font-family: helvetica,arial;
+line-height: 1.5;
+}
+
+ol,ul{
+list-style: none;
+}
+
+a {
+text-decoration: none;
+color: blue;
+}
+
+a.hover {
+text-decoration: underline;
+}
+
+.clear {
+clear: both;
+}
+
+a img{
+border: none;
+}
+#wrapper {
+width: 1450px;
+margin: 1px auto;
+}
+#slide-bar {
+	float: left;
+	margin-left: 10px;
+	width: 200px;
+	border-right:  1px solid #A7D7F9;
+	background: #F6F6F6;
+}
+#slide-bar2 {
+	margin-top: 20px;
+	line-height: 2;
+}
+#page {
+	float: right;
+	width: 1190px;
+}
+/*header css*/
+#header {
+	width: 1190px;
+	height: 50px;
+}
+
+#header-top {
+	width: 1190px;
+	float: top;
+}
+#header-top ul li,img {
+	display: inline;
+	padding: 10px;
+	float: right;
+}
+#header-top ul img {
+	margin-top: -10px;
+}
+
+#header-bottom{
+	width: 1190px;
+	float: bottom;
+}
+#hd-left{
+	float :left;
+	width: 400px;
+	border-bottom: 1px solid #A7D7F9;
+}
+#hd-left ul li{
+	margin-left: 20px;
+	display:  inline;
+	padding: 30px;
+}
+#hd-right {
+	float: right;
+	border-bottom: 1px solid #A7D7F9;
+}
+
+#hd-right ul li{
+	margin-right: 20px;
+	display:  inline;
+	padding: 30px;
+
+}
+/*end header */
+#primary{
+	width: 1190px;
+	height: auto;
+	background: #fefefe;
+}
+
+#content {
+	float: right;
+	width: 1190px;
+}
+
+#content-page{
+	margin-top: 20px;
+	float: left;
+	width: 800px;
+}
+#content-right {
+	margin-left: 10px;
+	margin-top: 20px;
+	float :right;
+	width: 350px;
+	
+}
+#statistic{
+	background: #F6F6F6;
+	margin-left: 10px;
+	font-size: 16px;
+	width: 350px;
+}
+#event {
+	margin-top: 5px;
+	margin-left: 10px;
+	background: #F6F6F6;
+	width: 350px;
+}
+
+#footer {
+	width: 1450px;
+	height: 20px;
+	background: #ababab;
+}
+
+#account-left{
+	float: left;
+	margin-left: 20px;
+	width: 400px;
+}
+
+#account-info {
+	margin-top: 20px;
+	float: right;
+	margin-left:  10px;
+	width: 300px;
+	
+}
+
+
+/*html csss*/
+input {
+  height: 25px;
+  border: 1px solid orange;
+}

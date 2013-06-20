@@ -1,0 +1,35 @@
+<% provide(:title, 'Create New Account') %>
+<div id="account-left">
+<span style="font-size: 18px; font-weight: bold;">Mở tài khoản :</span>
+<br/>
+<br/>
+<br/>
+ <%= form_for(@user) do |f| %>
+      	Tên người dùng :<br/>
+      			<%= f.text_field :name %><br/><br/>
+     		Mật Khẩu:<br/>
+      			<%= f.password_field :password %><br/><br/>
+      	Xác nhận lại mật khẩu :<br/>
+      			<%= f.password_field :password_confirmation %> <br/><br/>
+      	Email:<br/>		
+		      <%= f.text_field :email %><br/><br/>
+    		  
+      	Ngày Sinh<br/>
+      		<%= f.text_field :birth_day,:'data-behaviour' =>'datepicker', :'data-date-format'=> "yyyy-mm-dd" %><br/><br/><br/>
+      	<%= f.submit "Tạo tài khoản", class: "btn medium success pretty" %><br/>	
+  <%end%>
+ </div>
+<script type="text/javascript">
+  $('[data-behaviour~=datepicker]').datepicker();
+</script>
+<div id="account-info">
+		<h3><span style ="color: red">Nội dung & Quy định </span></h3>
+		<br/>
+		<br/>
+		Wiki là một trang tự web tự do , cá nhân có thể đóng góp những bài viết<br/><br/>
+		-Những nội dung được đóng góp bởi các thành viên.. với những quy định:<br/><br/>
+			+Mang tính chất xây dựng<br/>
+			+Viết đúng chỉnh tả<br/>
+			+Chia sẻ tri thức về các lĩnh vực ...<br/><br/>
+		*Bạn cần tuân theo các nguyên tắc của trang này trước khi đăng ký..<br/>
+</div>

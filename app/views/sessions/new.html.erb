@@ -1,0 +1,26 @@
+<% provide(:title, "Sign in") %>
+<h1>Sign in</h1>
+
+<div id = 'form-input'>
+<div class="row">
+  <div class="span6 offset3">
+    <br/><br/>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <table width="90%">
+        <tr>
+          <td><b>Email</b>(<span style=" color: red;">*</span>):</td>
+          <td><%= f.text_field :name, placeholder: 'Enter your user here..'%></td>
+          
+        </tr>
+        <tr>
+          <td><b>Password</b>(<span style=" color: red;">*</span>):</td>
+          <td><%= f.password_field :password, placeholder: 'Enter your password here...'%></td>
+        </tr>
+      </table>
+      <%= f.submit "Sign in", class: "medium warning btn pretty" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+  </div>
+</div>
+</div>

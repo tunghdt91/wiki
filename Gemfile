@@ -10,6 +10,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'pry'
 gem 'jquery-rails', '2.0.2'
 gem "ransack"
+gem 'bootstrap-datepicker-rails'
 
 
 # Gems used only for assets and not required

@@ -1,4 +1,21 @@
 Wiki::Application.routes.draw do
+
+  root to: 'statics#home'
+  resources :statics do
+    get 'home', on: :collection
+  end
+
+  resources :users do
+    member do
+    get 'new'
+    get 'show'
+    end
+  end
+
+  resources :sessions do
+    get 'new', on: :collection
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

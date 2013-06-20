@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wiki</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="wrapper">
+		<div id="slide-bar">
+			<%= render 'layouts/slide-bar'%>
+		</div>
 
-<%= yield %>
-
+		<div id="page">
+			<div id="header">
+				<div id="header-top">
+					<ul>
+						<li><%= link_to 'Đăng nhập',new_session_path%></li>
+						<img src="/img/people.gif" icon height="50" wight="50"/>
+						<li><%= link_to 'Mở tài khoản',new_user_path%></li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+				<div id='header-bottom'>
+					<div id="hd-left">
+						<ul>
+							<li><%= link_to 'Trang chính',root_path%></li>
+							<li><%= link_to 'Bài mới','#'%></li>
+						</ul>
+					</div>
+					<div id="hd-right">
+						<ul>
+							<li><%= link_to 'Thành viên','#'%></li>
+							<li><%= link_to 'Tạo sự kiện','#'%></li>
+							<li><%= link_to 'Liên kết','#'%></li>
+						</ul>
+					</div>
+				</div>	
+			</div> <!--end of header -->
+			<div class="clear"></div>
+			<div id="primary">
+				<div id="content">
+					<div id="content-page">
+					<%= yield %>	
+					</div>
+					<div id="content-right" >
+					 		<%= render 'layouts/content-right'%>
+					</div>
+				</div>
+			</div> <!--end of primary -->
+		</div><!-- end of wrapper-->
+	</div>
+		<div class="clear"></div>
+			<div id="footer">
+			</div> <!--end of footer -->
 </body>
 </html>
+
