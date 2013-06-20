@@ -1,3 +1,17 @@
+<script>
+$(document).ready(function(){
+	$('.topic').click(function(){
+			$('.topics').slideToggle();
+	});
+
+	$('.post').click(function(){
+			$('.posts').slideToggle();
+	});
+	$('.faq').click(function(){
+			$('.faqs').slideToggle();
+	});
+});
+</script>
 <div id="wrapper-slide-bar">
 	<div id="slide-bar1">
 		<img src="/img/logo.png" gumby-retina wight="150" height="150"/>
@@ -7,27 +21,33 @@
 
 		<div id="slide-bar2">
 			<%= link_to 'Trang Chính','#'%><br/>
-			<%= link_to 'Chủ đề liên quan','#'%>
-		<ul>
-			<li>aaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaaaa</li>
-		</ul>
-	</div>
-
-		<div id="slide-bar2">
-		<ul>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaaa</li>
-			<li><%= link_to 'aaaa','#'%>aaaaaaaaaaaaaa</li>
-		</ul>
+			<hr/>
+			<p class ="topic"><%= link_to 'Chủ đề liên quan','#'%></p>
+				<ul class = "topics">
+					<li><%= link_to 'Công việc đời sống','#'%></li>
+					<li><%= link_to 'Chém gió','#'%></li>
+					<li><%= link_to 'Gái gú','#'%></li>
+					<li><%= link_to 'Ruby on Rails','#'%></li>
+					<li><%= link_to 'Php & Yji','#'%></li>
+					<li><%= link_to 'Other','#'%></li>
+				</ul>
+				<hr/>
+			<p class='post'><%= link_to 'Bài viết','#'%></p>
+				<ul class='posts'>
+					<li><%= link_to 'Xem tất cả','#'%></li>
+					<li><%= link_to 'Bài viết mới nhất','#'%></li>	
+					<li><%= link_to 'Bài viết ngẫu nhiên','#'%></li>
+					<li><%= link_to 'Bài viết được quan tâm','#'%></li>
+				</ul>
+			<hr/>
+			
+			<p class='faq'><%= link_to 'Hỗ trợ','#'%></p>
+				<ul class='faqs'>
+					<li><%= link_to 'Điều khoản','#'%></li>	
+					<li><%= link_to 'Gõ tiếng việt','#'%></li>
+					<li><%= link_to 'Liên hệ','#'%></li>
+				</ul>
+			<hr/>
+			<%= link_to 'Ủng hộ & Quyên góp','#'%>
 	</div>
 </div>

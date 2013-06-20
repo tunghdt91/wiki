@@ -13,8 +13,12 @@ Wiki::Application.routes.draw do
   end
 
   resources :sessions do
-    get 'new', on: :collection
+    member do
+    get 'new'
+    end
   end
+  resources :sessions
+match '/signout', to: 'sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

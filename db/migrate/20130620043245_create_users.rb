@@ -8,8 +8,11 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :group
       t.string :level
       t.string :integer
+      t.string :avatar_path,default: '/img/avatar.png'
+      t.string :remember_token 
 
       t.timestamps
     end
+     add_index :users, [:remember_token]
   end
 end

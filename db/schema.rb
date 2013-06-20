@@ -30,9 +30,13 @@ ActiveRecord::Schema.define(:version => 20130620092148) do
     t.integer  "group"
     t.string   "level"
     t.string   "integer"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "avatar_path",     :default => "/img/avatar.png"
+    t.string   "remember_token"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.string   "password_digest"
   end
+
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

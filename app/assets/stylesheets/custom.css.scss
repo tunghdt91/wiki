@@ -10,7 +10,7 @@ background: transparent;
 }
 
 body {
-font-size: 100%;
+font-size: 90%;
 font-family: helvetica,arial;
 line-height: 1.5;
 }
@@ -36,7 +36,7 @@ a img{
 border: none;
 }
 #wrapper {
-width: 1450px;
+width: 1400px;
 margin: 1px auto;
 }
 #slide-bar {
@@ -46,27 +46,47 @@ margin: 1px auto;
 	border-right:  1px solid #A7D7F9;
 	background: #F6F6F6;
 }
+
+
+#slide-bar2 ul.topics li a{
+	font-size: 13px;
+	color: black;
+	margin-left: 20px;
+}
+#slide-bar2 ul.faqs li a{
+	font-size: 13px;
+	color: black;
+	margin-left: 20px;
+}
+
+#slide-bar2 ul.posts li a{
+	font-size: 13px;
+	color: black;
+	margin-left: 20px;
+}
+
 #slide-bar2 {
 	margin-top: 20px;
 	line-height: 2;
 }
 #page {
 	float: right;
-	width: 1190px;
+	width: 1150px;
 }
 /*header css*/
 #header {
-	width: 1190px;
+	width: 1150px;
 	height: 50px;
 }
 
 #header-top {
-	width: 1190px;
+	width: 1150px;
 	float: top;
+	font-size: 12px;
 }
 #header-top ul li,img {
 	display: inline;
-	padding: 10px;
+	padding: 5px;
 	float: right;
 }
 #header-top ul img {
@@ -74,7 +94,7 @@ margin: 1px auto;
 }
 
 #header-bottom{
-	width: 1190px;
+	width: 1150px;
 	float: bottom;
 }
 #hd-left{
@@ -83,9 +103,8 @@ margin: 1px auto;
 	border-bottom: 1px solid #A7D7F9;
 }
 #hd-left ul li{
-	margin-left: 20px;
 	display:  inline;
-	padding: 30px;
+	padding: 15px;
 }
 #hd-right {
 	float: right;
@@ -95,12 +114,12 @@ margin: 1px auto;
 #hd-right ul li{
 	margin-right: 20px;
 	display:  inline;
-	padding: 30px;
+	padding: 15px;
 
 }
 /*end header */
 #primary{
-	width: 1190px;
+	width: 1150px;
 	height: auto;
 	background: #fefefe;
 }
@@ -113,44 +132,94 @@ margin: 1px auto;
 #content-page{
 	margin-top: 20px;
 	float: left;
-	width: 800px;
+	width: 700px;
 }
 #content-right {
 	margin-left: 10px;
 	margin-top: 20px;
 	float :right;
-	width: 350px;
+	width: 400px;
 	
 }
+#title-statistic {
+	background: #F2C3C4;
+	border: 1px solid #E05F62;
+	width:  360px;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+}
 #statistic{
+	margin-top: 5px;
 	background: #F6F6F6;
-	margin-left: 10px;
 	font-size: 16px;
 	width: 350px;
+	padding-left:  10px;
 }
-#event {
-	margin-top: 5px;
-	margin-left: 10px;
-	background: #F6F6F6;
-	width: 350px;
+#title-event {
+	margin-top: 10px;
+	background: #FFD6C0;
+	border: 1px solid #E68D5D;
+	width:  360px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
 }
 
+#event {
+	margin-top: 5px;
+	background: #F6F6F6;
+	font-size: 16px;
+	width: 350px;
+	padding-left:  10px;
+}
+
+
+#title-img {
+	margin-top: 10px;
+	background: #CCFCF9;
+	border: 1px solid #4CCBC3;
+	width:  360px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+#img-member{
+	margin-top: 5px;
+	font-size: 16px;
+	width: 350px;
+	padding-left:  10px;
+	border-bottom: 1px solid #F6F6F6;
+	height: 250px;
+}
+
+#img-member div#avatar-member {
+	float: left;
+	width: 100px;
+}
+#img-member div#info-member {
+	float: right;
+	width: 240px;
+}
+
+/*end */
 #footer {
-	width: 1450px;
-	height: 20px;
-	background: #ababab;
+	width: 1400px;
+	height: 50px;
+	margin-left: 33px;
+	margin-top: 10px;
+	background: #F6F6F6;
 }
 
 #account-left{
 	float: left;
-	margin-left: 20px;
-	width: 400px;
+	margin-left: 70px;
+	width: 300px;
 }
 
 #account-info {
-	margin-top: 20px;
 	float: right;
-	margin-left:  10px;
+	margin-left:  30px;
 	width: 300px;
 	
 }
@@ -158,6 +227,5 @@ margin: 1px auto;
 
 /*html csss*/
 input {
-  height: 25px;
-  border: 1px solid orange;
+  height: 30px;
 }

@@ -1,9 +1,31 @@
+<div id="title-statistic">Thông tin</div>
 <div id="statistic">
 	Hôm nay là : <span style="font-weight: bold; color: red;"> <%= Time.now.strftime('%d')%> - <%= Time.now.strftime('%m')%> - <%= Time.now.strftime('%Y')%></span><br/>
 	Tổng số thành viên: <span style="font-weight: bold; color: blue;"> <%= User.all.count%></span><br/>
 	Tổng số bài viết: <span style="font-weight: bold; color: blue;"> <%= Post.all.count %></span><br/>
 	Thành Viên mới nhất:<span style="font-weight: bold; color: red;"> Không có</span><br/>
 </div>
+
+<div id="title-event">Sự kiện</div>
 <div id="event">
-Event
+	Sinh nhật :<br/>
+	Ngày này năm xưa:<br/>
+	Sự  kiện tuần này :<br/>
+</div>
+
+<div id="title-img">Thành viên ngẫu nhiên</div>
+<div id="img-member">
+	<div id="avatar-member">
+		<img src="/img/avatar.png" alt="framgia"/>
+	</div>
+	<div id="info-member">
+		Tên:<br/>
+		Quê Quán:<br/>
+		Sinh nhật :<br/>
+		Ngày gia nhập:<br/>
+		
+	</div>
+	<div class="clear"></div>
+	Sở thích:<br/>
+	Câu nói ưu thích:<br/>
 </div>

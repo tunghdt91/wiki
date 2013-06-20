@@ -17,9 +17,18 @@
 			<div id="header">
 				<div id="header-top">
 					<ul>
-						<li><%= link_to 'Đăng nhập',new_session_path%></li>
+						<% if !signed_in?%>
+							<li><%= link_to 'Đăng nhập',new_session_path%></li>
+							<%else%>
+							<li><%= link_to 'Thoát',signout_path, method: "delete" %></li>
+							
+						<%end%>
 						<img src="/img/people.gif" icon height="50" wight="50"/>
-						<li><%= link_to 'Mở tài khoản',new_user_path%></li>
+						<% if !signed_in?%>
+							<li><%= link_to 'Mở tài khoản',new_user_path%></li>
+						<%else%>
+							<li>xin chào (<span style="font-weight: bold; color: red;"><%= current_user.name %></span>)</li>
+						<% end %>
 					</ul>
 				</div>
 				<div class="clear"></div>
@@ -27,6 +36,7 @@
 					<div id="hd-left">
 						<ul>
 							<li><%= link_to 'Trang chính',root_path%></li>
+							<li><%= link_to 'Thông báo','#'%></li>
 							<li><%= link_to 'Bài mới','#'%></li>
 						</ul>
 					</div>
@@ -35,6 +45,9 @@
 							<li><%= link_to 'Thành viên','#'%></li>
 							<li><%= link_to 'Tạo sự kiện','#'%></li>
 							<li><%= link_to 'Liên kết','#'%></li>
+							<li><%= link_to 'Việc làm','#'%></li>
+							<li><%= link_to 'Rao vặt','#'%></li>
+							<li><%= link_to 'Trang cá nhân','#'%></li>
 						</ul>
 					</div>
 				</div>	
@@ -54,6 +67,7 @@
 	</div>
 		<div class="clear"></div>
 			<div id="footer">
+				<%= render 'layouts/footer'%>
 			</div> <!--end of footer -->
 </body>
 </html>
