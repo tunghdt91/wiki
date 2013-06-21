@@ -1,0 +1,42 @@
+<h2>Thông tin tài khoản</h2>
+<table width='60%'>
+	<tr>
+		<td>Tên</td>
+		<td><%= @user.name%></td>
+	</tr>
+	<tr>
+		<td>Ngày sinh</td>
+		<td><%= @user.birth_day%></td>
+	</tr>
+		
+	<tr>
+		<td>Quê quán</td>
+		<td><%= @user.address%></td>
+	</tr>
+
+	<tr>
+		<td>Email</td>
+		<td><%= @user.email%></td>
+	</tr>
+
+	<tr>
+	<tr>
+		<td>Số bài viết</td>
+		<td><%= Post.where('user_id=?',current_user.id).count%></td>
+	</tr>
+	<tr>
+		<td>Sở thích</td>
+		<td><%= @user.sothich%></td>
+	</tr>
+
+	<tr>
+		<td>Câu nói ưu thích</td>
+		<td><%= @user.caunoiuathich%></td>
+	</tr>
+	
+	<tr height="60">
+		<td widht="10%">Hình đại diện</td>
+		<td widht="90%" align="left"><img src="<%=@user.avatar_path %>"  widht="60" height="60" class="img_avatar_user"/></td>
+	</tr>
+</table>
+<%= link_to 'Cập nhật thông tin',edit_user_path(current_user.id)%>

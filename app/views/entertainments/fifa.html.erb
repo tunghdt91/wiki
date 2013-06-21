@@ -1,0 +1,33 @@
+<script>
+$(document).ready(function(){
+	$("#fifa_button").click(function(){
+			$("#new_fifa_post").slideToggle();
+	});
+	$("#send_fifa_post").click(function(){
+			$("#new_fifa_post").slideUp();
+	});
+});
+</script>
+
+<input type="button" value="Bài mới" class="btn pretty warning medium" id="fifa_button"/>
+<div id='new_fifa_post'>
+<br/>
+<br/>
+<br/>
+<h2>[FiFa]Tạo chủ đề mới.</h2>
+	<%= form_for @fifa_new_post, url: entertainments_path ,method: :post do |f|%>
+		<table>
+			<tr>
+				<td>Tiêu đề</td> 
+				<td><%=f.text_field :title%></td>
+			</tr>
+			<tr>
+				<td>Nội dung</td>
+				<td><%=f.text_area :content%></td>
+			</tr>
+		</table>
+	<input type="hidden" name="id" value="fifa"/>
+	<%= f.submit "Gửi chủ đề", class: "btn medium success pretty",id: "send_fifa_post" %>	
+	<%end%>
+</div>
+

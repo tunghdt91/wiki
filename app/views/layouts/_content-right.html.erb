@@ -1,9 +1,21 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-href="http://developers.facebook.com/docs/reference/plugins/like" data-send="true" data-width="360" data-show-faces="true" data-font="arial"></div>
+
+<div class="clear"></div>
 <div id="title-statistic">Thông tin</div>
 <div id="statistic">
 	Hôm nay là : <span style="font-weight: bold; color: red;"> <%= Time.now.strftime('%d')%> - <%= Time.now.strftime('%m')%> - <%= Time.now.strftime('%Y')%></span><br/>
 	Tổng số thành viên: <span style="font-weight: bold; color: blue;"> <%= User.all.count%></span><br/>
 	Tổng số bài viết: <span style="font-weight: bold; color: blue;"> <%= Post.all.count %></span><br/>
-	Thành Viên mới nhất:<span style="font-weight: bold; color: red;"> Không có</span><br/>
+	Thành Viên mới nhất:<span style="font-weight: bold; color: red;"><%=User.first.name%></span><br/>
 </div>
 
 <div id="title-event">Sự kiện</div>
@@ -14,18 +26,20 @@
 </div>
 
 <div id="title-img">Thành viên ngẫu nhiên</div>
+<%user = User.find(rand(1..(User.all.count)) )%>
 <div id="img-member">
 	<div id="avatar-member">
 		<img src="/img/avatar.png" alt="framgia"/>
 	</div>
 	<div id="info-member">
-		Tên:<br/>
-		Quê Quán:<br/>
-		Sinh nhật :<br/>
+		Tên:<span style="color: red; font-weight: bold;"><a href="<%= user_path(user.id)%>"><%= user.name%></a></span><br/>
+		Quê Quán:<%= user.address%><br/>
+		Sinh nhật :<%= user.birth_day%><br/>
 		Ngày gia nhập:<br/>
 		
 	</div>
 	<div class="clear"></div>
-	Sở thích:<br/>
-	Câu nói ưu thích:<br/>
+	Sở thích: <%= user.sothich%><br/>
+	Câu nói ưu thích:<%= user.caunoiuathich%><br/>
 </div>
+

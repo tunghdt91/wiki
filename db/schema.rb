@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620092148) do
+ActiveRecord::Schema.define(:version => 20130621085550) do
+
+  create_table "entertainments", :force => true do |t|
+    t.string   "catalog"
+    t.string   "title"
+    t.string   "content"
+    t.string   "picture"
+    t.integer  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.date     "time_start"
+    t.date     "time_end"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
@@ -26,17 +45,17 @@ ActiveRecord::Schema.define(:version => 20130620092148) do
     t.string   "name"
     t.string   "email"
     t.string   "birth_day"
-    t.string   "date"
+    t.string   "date_join"
+    t.string   "address"
+    t.string   "sothich"
+    t.string   "caunoiuathich"
     t.integer  "group"
     t.string   "level"
-    t.string   "integer"
     t.string   "avatar_path",     :default => "/img/avatar.png"
     t.string   "remember_token"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
     t.string   "password_digest"
   end
-
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end
