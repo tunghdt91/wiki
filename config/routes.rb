@@ -10,14 +10,23 @@ Wiki::Application.routes.draw do
   end
 
   root to: 'statics#home'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
   resources :statics do
     get 'home', on: :collection
   end
 
+  resources :events
+
+  resources :entertainments do
+      get 'aoe', on: :collection
+      get 'halflife', on: :collection
+      get 'cdtl', on: :collection
+      get 'fifa', on: :collection
+  end
+
   resources :users do
     member do
-    get 'new'
-    get 'show'
     end
   end
 
@@ -26,8 +35,6 @@ Wiki::Application.routes.draw do
     get 'new'
     end
   end
-  resources :sessions
-match '/signout', to: 'sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

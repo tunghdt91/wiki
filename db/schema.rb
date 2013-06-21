@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130621102356) do
 
   create_table "dienthoais", :force => true do |t|
@@ -19,6 +20,25 @@ ActiveRecord::Schema.define(:version => 20130621102356) do
     t.string   "content"
     t.string   "file_name"
     t.string   "file_path"
+=======
+ActiveRecord::Schema.define(:version => 20130621085550) do
+
+  create_table "entertainments", :force => true do |t|
+    t.string   "catalog"
+    t.string   "title"
+    t.string   "content"
+    t.string   "picture"
+    t.integer  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.date     "time_start"
+    t.date     "time_end"
+>>>>>>> 12db23413bc4a98c1745f99194fa71542f3ca445
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -43,10 +63,12 @@ ActiveRecord::Schema.define(:version => 20130621102356) do
     t.string   "name"
     t.string   "email"
     t.string   "birth_day"
-    t.string   "date"
+    t.string   "date_join"
+    t.string   "address"
+    t.string   "sothich"
+    t.string   "caunoiuathich"
     t.integer  "group"
     t.string   "level"
-    t.string   "integer"
     t.string   "avatar_path",     :default => "/img/avatar.png"
     t.string   "remember_token"
     t.datetime "created_at",                                     :null => false

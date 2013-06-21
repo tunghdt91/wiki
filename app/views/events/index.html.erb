@@ -1,0 +1,94 @@
+<script>
+$(document).ready(function(){
+	$('#new-event').click(function(){
+		$("#content1").slideToggle();
+		$("#content2").slideUp();
+		$("#content3").slideUp();
+		$("#content4").slideUp();
+	});
+	$('#week-event').click(function(){
+		$("#content2").slideToggle();
+		$("#content1").slideUp();
+		$("#content3").slideUp();
+		$("#content4").slideUp();
+	});
+	$('#month-event').click(function(){
+		$('#content3').slideToggle();
+		$("#content1").slideUp();
+		$("#content2").slideUp();
+		$("#content4").slideUp();
+	});
+
+
+	$('#all-event').click(function(){
+		$('#content4').slideToggle();
+		$("#content1").slideUp();
+		$("#content2").slideUp();
+		$("#content3").slideUp();
+	});	
+});
+</script>
+
+<table width="100%" cellpadding="10">
+	<tr >
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50"/><div id="new-event"><%= link_to 'Thêm sự kiện mới','#' %></div></td>
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50"/><div id="week-event"><%= link_to 'Sự kiện tuần này ','#'%></div></td>
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50"/><div id="month-event"><%= link_to 'Sự kiện tháng này','#'%></div></td>
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50"/><div id="all-event"><%= link_to 'Xem tất cả','#'%></div></td>
+	</tr>
+</table>
+			<div id="content1">
+				<%= form_for @event_new ,url: events_path, method: :post do |f| %>
+					<table width="100%">
+						<tr>
+							<td>Tên sự kiện</td>
+							<td><%= f.text_field :name %></td>
+						</tr>
+
+						<tr>
+							<td>Địa Điểm</td>
+							<td><%= f.text_field :address %></td>
+						</tr>
+						<tr>
+							<td>Thời gian bắt đầu</td>
+							<td><%= f.text_field :time_start %></td>
+						</tr>
+
+						<tr>
+							<td>Thời gian  kết thúc</td>
+							<td><%= f.text_field :time_end %></td>
+						</tr>
+					</table>
+					<%= f.submit "Lưu lại", class: "btn medium success pretty" %><br/>	
+				<%end%>
+			</div>
+
+
+			<div id="content2">
+				
+			</div>
+
+			<div id="content3">
+				
+			</div>
+			
+			<div id="content4">
+				<h2>Tất cả các sự kiện </h2><br/>
+				<table width="100%">
+					<tr align="center" bgcolor="#FFD6C0">
+						<th>Tên sự kiện:</th>
+						<th>Địa điểm</th>
+						<th>Thời gian bắt đầu</th>
+						<th>Thời gian kết thúc</th>
+					</tr>
+					<% @all_events.each do |e|%>
+						<tr align="center" height="40">
+							<td><%= e.name%></td>
+							<td><%= e.address%></td>
+							<td><%= e.time_start%></td>
+							<td><%= e.time_end%></td>
+						</tr>
+					<%end%>
+					<hr/>
+				</table>
+			</div>

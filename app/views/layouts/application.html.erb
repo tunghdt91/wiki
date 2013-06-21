@@ -44,11 +44,19 @@
 					<div id="hd-right">
 						<ul>
 							<li><%= link_to 'Thành viên','#'%></li>
-							<li><%= link_to 'Tạo sự kiện','#'%></li>
+							<li><%= link_to 'Sự kiện',events_path%></li>
 							<li><%= link_to 'Liên kết','#'%></li>
+<<<<<<< HEAD
 							<li><%= link_to 'Việc làm','#'%></li>
 							<li><%= link_to 'Rao vặt',markets_path%></li>
 							<li><%= link_to 'Trang cá nhân','#'%></li>
+=======
+							<li><%= link_to 'Giải trí',entertainments_path%></li>
+							<li><%= link_to 'Rao vặt','#'%></li>
+							<% if signed_in?%>
+							<li><%= link_to 'Trang cá nhân',user_path(current_user)%></li>
+							<%end%>
+>>>>>>> 12db23413bc4a98c1745f99194fa71542f3ca445
 						</ul>
 					</div>
 				</div>	
@@ -70,7 +78,11 @@
 			<div id="footer">
 				<%= render 'layouts/footer'%>
 			</div> <!--end of footer -->
+<<<<<<< HEAD
 <%= debug(params) if Rails.env.development? %>
+=======
+			<%= debug(params) if Rails.env.development? %>
+>>>>>>> 12db23413bc4a98c1745f99194fa71542f3ca445
 </body>
 </html>
 

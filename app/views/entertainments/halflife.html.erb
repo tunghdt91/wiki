@@ -1,0 +1,33 @@
+<script>
+$(document).ready(function(){
+	$("#halflife_button").click(function(){
+			$("#new_halflife_post").slideToggle();
+	});
+	$("#send_halflife_post").click(function(){
+			$("#new_halflife_post").slideUp();
+	});
+});
+</script>
+
+<input type="button" value="Bài mới" class="btn pretty warning medium" id="halflife_button"/>
+<div id='new_cdtl_post'>
+<br/>
+<br/>
+<br/>
+<h2>[Halflife]Tạo chủ đề mới.</h2>
+	<%= form_for @halflife_new_post, url: entertainments_path ,method: :post do |f|%>
+		<table>
+			<tr>
+				<td>Tiêu đề</td> 
+				<td><%=f.text_field :title%></td>
+			</tr>
+			<tr>
+				<td>Nội dung</td>
+				<td><%=f.text_area :content%></td>
+			</tr>
+		</table>
+	<input type="hidden" name="id" value="halflife"/>
+	<%= f.submit "Gửi chủ đề", class: "btn medium success pretty",id: "send_halflife_post" %>	
+	<%end%>
+</div>
+

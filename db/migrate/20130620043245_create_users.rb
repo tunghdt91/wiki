@@ -4,10 +4,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :birth_day
-      t.string :date
+      t.string :date_join
+      t.string :address
+      t.string :sothich
+      t.string :caunoiuathich
       t.integer :group
       t.string :level
-      t.string :integer
       t.string :avatar_path,default: '/img/avatar.png'
       t.string :remember_token 
 
