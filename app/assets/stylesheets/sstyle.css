@@ -1,0 +1,41 @@
+#field1 {
+	width: 750px;
+
+}
+
+#index_posts {
+	width: 750px;
+	margin: 0 auto;
+	margin-left: 50px;
+}
+
+#new_post {
+	margin-left: 30px;
+}
+
+#index_post_table{
+	width: 700px;
+	text-align: center;
+}
+#dkm a{
+	color: black;
+}
+
+#raovat {
+	width: 700px;
+	text-align: left;
+	margin-left: 40px;
+}
+
+#raovat th{
+	height: 70px;
+}
+
+#dienthoai {
+	margin-left: 40px;
+	width: 700px;
+}
+
+#dienthoai_post {
+	width: 110%;
+}

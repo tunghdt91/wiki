@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="sstyle.css" type="text/css" media="screen" charset="utf-8">
 </head>
 <body>
 	<div id="wrapper">
@@ -37,7 +38,7 @@
 						<ul>
 							<li><%= link_to 'Trang chính',root_path%></li>
 							<li><%= link_to 'Thông báo','#'%></li>
-							<li><%= link_to 'Bài mới','#'%></li>
+							<li><%= link_to 'Bài mới',new_post_path%></li>
 						</ul>
 					</div>
 					<div id="hd-right">
@@ -46,7 +47,7 @@
 							<li><%= link_to 'Tạo sự kiện','#'%></li>
 							<li><%= link_to 'Liên kết','#'%></li>
 							<li><%= link_to 'Việc làm','#'%></li>
-							<li><%= link_to 'Rao vặt','#'%></li>
+							<li><%= link_to 'Rao vặt',markets_path%></li>
 							<li><%= link_to 'Trang cá nhân','#'%></li>
 						</ul>
 					</div>
@@ -69,6 +70,7 @@
 			<div id="footer">
 				<%= render 'layouts/footer'%>
 			</div> <!--end of footer -->
+<%= debug(params) if Rails.env.development? %>
 </body>
 </html>
 

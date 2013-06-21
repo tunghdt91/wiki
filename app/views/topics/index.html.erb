@@ -1,0 +1,69 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Tabs - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
+</head>
+<body>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1"> Tổng Quan </a></li>
+    <li><a href="#tabs-2"> Tạo Mới </a></li>
+    <li><a href="#tabs-3"> Hướng dẫn  </a></li>
+  </ul>
+  <div id="tabs-1">
+    <h2> Các Topic hiện có </h2>
+    <table border="1">
+      <tr>
+        <th> ID </th>
+        <th> Name </th>
+        <th> Setting </th>
+      </tr>
+      <% @topics.each do |topic| %>
+        <tr>
+          <td> <%= topic.id %> </td>
+          <td> <%= topic.name %> </td>
+          <td><%= link_to 'Destroy', topic, method: :delete , data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div id="tabs-2">
+    <% @topic2 = Topic.new %>
+    <h2> Nhập tên topic muốn khởi tạo: </h2>
+    <%= form_for @topic2, url: topics_path, method: :post do |f| %>
+      <%= f.label :name %></br>
+      <%= f.text_field :name %>
+      <%= f.submit "Create Topic", class: "medium secondary btn" %>
+    <% end %>  
+  </div>
+
+  <div id="tabs-3">
+    <p>Quy định về bài review: 
+
+    Tuân thủ theo các nội dung về bài viết đã được nêu bên trên.
+    PHẢI trên 10 posts (10 comments/ 10 bình luận) mới được tạo topic (chủ đề) mới trong 2 box review chính.
+    PHẢI có địa chỉ rõ ràng hoặc có hướng dẫn đường đi.
+    KHÔNG một hình thức PR nào được chấp nhận tại box Review (bạn bè, anh chị em, người quen... tạo nick nhằm PR cho nhau đều bị cấm), trừ khi có sự cho phép của BQT.
+    Bài review có thể copy ở nơi khác nhưng phải ghi rõ nguồn hoặc tác giả.
+    Nội dung bài viết nếu đã từng quảng cáo ở nhiều nơi hoặc có tính chất PR sẽ tự động được chuyển.
+    Đối với chủ quán review: không được spam bài, up bài
+    Xem Gợi ý về 1 bài review mẫu hòan chỉnh ở </p>
+  </div>
+</div>
+ 
+ 
+</body>
+</html>

@@ -1,5 +1,14 @@
 Wiki::Application.routes.draw do
 
+  resources :posts
+  resources :topics
+  resources :markets do
+    get 'dienthoai', on: :collection
+    get 'laptop', on: :collection
+    get 'xe', on: :collection
+    get 'dokhac', on: :collection
+  end
+
   root to: 'statics#home'
   resources :statics do
     get 'home', on: :collection

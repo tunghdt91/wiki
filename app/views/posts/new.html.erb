@@ -1,0 +1,41 @@
+<html>
+	<div id="new_post">
+		<p>Vui lòng đọc Wikipedia:Tuần tra trang mới và nhớ những điểm chính khi tuần tra:
+		Đừng "cắn" người mới đến: Khi chèn các bản mẫu như {{cần dọn dẹp}} chỉ sau một vài phút khi bài được tạo có thể làm các thành viên mới nản lòng. Bạn có thể sử dụng Twinkle để giới thiệu về cách viết bài, và đặt bản mẫu {{bài viết đầu tiên}} trên trang thảo luận của họ nếu bài viết của họ có nguy cơ xóa. </p>
+		<p>Các bài viết không nên chèn bản mẫu xóa nhanh khi không có ngữ cảnh (XN BV1) hoặc không có nội dung (XN BV3) chỉ khi bài vừa mới tạo, vì không phải tất cả mọi thành viên đều viết đầy đủ nội dung trong phiên bản đầu tiên;
+		Các trang mang tính tấn công cá nhân (XN C11) phải được tẩy trống;
+		Các bài viết về tiểu sử người còn sống không có nguồn có thể đề xuất xóa nhanh. Bạn có thể dùng công cụ Twinkle, hoặc xem bản mẫu {{prod blp}} để chèn bản mẫu thủ công. </p>
+		<p>Bạn có thể kiểm tra tình trạng vi phạm bản quyền của các trang mới bằng cách sao chép một đoạn bất kỳ và dán nó vào bất kỳ công cụ tìm kiếm và nên để đoạn văn bản đó trong dấu 2 phẩy. Đối với các trang có duy nhất một tài liệu tham khảo hoặc liên kết ngoài trực tuyến, hãy so sánh nội dung bài viết với trang tham khảo đó, nếu khớp hãy chèn bản mẫu {{vi phạm bản quyền 2}}.</p>
+	</div>
+</html>
+	<%= form_for @post do |f| %>
+	  <%= render 'shared/error_messages' , object: f.object %>
+
+		<div class="row" id="field1">
+		  <fieldset class="ten columns">
+		    <legend>New Post</legend>
+		    <ul>
+		    	<div class="field" > 
+			    <%= f.label :Topic %><br />
+			    <%= f.collection_select :topic_id,
+			    Topic.all, :id, :name, {include_blank: true }, {:class=>'post_new'} %>
+			  	</div>
+
+		      <li class="field">
+		          <%= "Tiêu đề" %></br>
+			        <%= f.text_field :topic %>
+		      </li>
+		      <li class="field">
+		         <%= f.label :content %></br>
+			 			 <%= f.text_area :content , :rows => 5, :cols => 30 %>
+		      </li>
+		    </ul>
+		  </fieldset>
+		</div>
+	  </br>
+
+	  <%= f.submit "Create Post", class: "medium success btn pretty" %>
+	  <span id="dkm"><%= link_to 'Back' , root_path , class: "medium success btn pretty"%></span>
+  
+  <% end %>
+

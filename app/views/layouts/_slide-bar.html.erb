@@ -34,7 +34,7 @@ $(document).ready(function(){
 				<hr/>
 			<p class='post'><%= link_to 'Bài viết','#'%></p>
 				<ul class='posts'>
-					<li><%= link_to 'Xem tất cả','#'%></li>
+					<li><%= link_to 'Xem tất cả', posts_path %></li>
 					<li><%= link_to 'Bài viết mới nhất','#'%></li>	
 					<li><%= link_to 'Bài viết ngẫu nhiên','#'%></li>
 					<li><%= link_to 'Bài viết được quan tâm','#'%></li>
@@ -49,5 +49,7 @@ $(document).ready(function(){
 				</ul>
 			<hr/>
 			<%= link_to 'Ủng hộ & Quyên góp','#'%>
+			<hr/>
+			<%= link_to 'Quản lý',topics_path%>
 	</div>
 </div>
