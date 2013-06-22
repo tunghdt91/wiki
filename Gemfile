@@ -11,6 +11,9 @@ gem 'pry'
 gem 'jquery-rails', '2.0.2'
 gem "ransack"
 gem 'bootstrap-datepicker-rails'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+gem 'paperclip'
 
 
 # Gems used only for assets and not required

@@ -232,6 +232,9 @@ margin: 1px auto;
 		display: none;
 	}
 
+#table-post{
+	border: 1px solid #B0BDC6;
+}
 
 /*html csss*/
 input {
@@ -240,9 +243,6 @@ input {
 
 textarea{
   border: 1px solid orange;
-  width: 150%;
-  height : 140px;
-  bgcolor: #AAAAAA;
   padding: 10px;
   margin-bottom: 15px;
 }

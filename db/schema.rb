@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621085550) do
+ActiveRecord::Schema.define(:version => 20130622021245) do
+
+  create_table "entertainmentposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "entertainment_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "entertainmentposts", ["created_at"], :name => "index_entertainmentposts_on_created_at"
 
   create_table "entertainments", :force => true do |t|
     t.string   "catalog"

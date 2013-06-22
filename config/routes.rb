@@ -14,6 +14,7 @@ Wiki::Application.routes.draw do
       get 'halflife', on: :collection
       get 'cdtl', on: :collection
       get 'fifa', on: :collection
+      post 'comment', on: :collection
   end
 
   resources :users do

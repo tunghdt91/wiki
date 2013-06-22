@@ -22,7 +22,15 @@ class EntertainmentsController < ApplicationController
 		@entertainment = Entertainment.find(params[:id])
 		tmp = @entertainment.viewed + 1
 		@entertainment.update_attributes(viewed: tmp)
+		# @entertainment.entertainmentposts=@entertainment.entertainmentposts.paginate(page: params[:page], per_page: 5)
+	end
 
+	def comment
+     @entertainment = Entertainment.find_by_id(params[:id].to_i)
+     content = params[:content]
+     @entertainment.entertainmentposts.create!(content: content,user_id: current_user.id)
+     @entertainment.update_attributes(updated_at: Entertainmentpost.last.updated_at)
+     redirect_to entertainment_path(params[:id].to_i)
 	end
 
 	def create

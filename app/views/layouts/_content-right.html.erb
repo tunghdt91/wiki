@@ -14,7 +14,9 @@
 <div id="statistic">
 	Hôm nay là : <span style="font-weight: bold; color: red;"> <%= Time.now.strftime('%d')%> - <%= Time.now.strftime('%m')%> - <%= Time.now.strftime('%Y')%></span><br/>
 	Tổng số thành viên: <span style="font-weight: bold; color: blue;"> <%= User.all.count%></span><br/>
-	Tổng số bài viết: <span style="font-weight: bold; color: blue;"> <%= Post.all.count %></span><br/>
+
+	<%total_post= Post.all.count + Entertainmentpost.all.count%>
+	Tổng số bài viết: <span style="font-weight: bold; color: blue;"> <%= total_post%></span><br/>
 	Thành Viên mới nhất:<span style="font-weight: bold; color: red;"><%=User.first.name%></span><br/>
 </div>
 
