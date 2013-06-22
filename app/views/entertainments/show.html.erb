@@ -1,5 +1,16 @@
-noi dung
+<%count=1%>
+<span style=" font-weigth: bold;" ><%= @entertainment.title%></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr bgcolor="#425989" height="30">
+		<td widht="20%"><font color="white"><%= @entertainment.created_at.strftime('%d-%m')%></font></td>
+		<td align="right"><font color="white">#<%= count%></font></td>
+	</tr>
+	
+	<tr  bgcolor="#E1E4F2" heigth="60">
+		<td width="10%"><img src="<%= User.where('name=?',@entertainment.user_post)[0].avatar_path %>" widht="30" height="30"></td>
+		<td><%= @entertainment.user_post%></td>
+	<tr>
+</table>
+<div class="clear"></div>
+<br/>
 
-danh gia
-
-nhan xet

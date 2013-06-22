@@ -231,7 +231,18 @@ margin: 1px auto;
 	#new_aoe_post,#new_fifa_post,#new_cdtl_post,#new_halflife{
 		display: none;
 	}
+
+
 /*html csss*/
 input {
   height: 30px;
+}
+
+textarea{
+  border: 1px solid orange;
+  width: 150%;
+  height : 140px;
+  bgcolor: #AAAAAA;
+  padding: 10px;
+  margin-bottom: 15px;
 }

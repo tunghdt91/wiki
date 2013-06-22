@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(:version => 20130621085550) do
     t.string   "content"
     t.string   "picture"
     t.integer  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "user_post"
+    t.integer  "viewed",     :default => 1
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "events", :force => true do |t|

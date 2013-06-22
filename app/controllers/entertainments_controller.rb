@@ -1,4 +1,6 @@
 class EntertainmentsController < ApplicationController
+	before_filter :signed_in_user, only: [:aoe, :cdtl, :fifa, :halflife]
+
 	def aoe
 		@aoe_new_post = Entertainment.new
 		@aoes = Entertainment.where('catalog=?',"aoe")
@@ -18,6 +20,9 @@ class EntertainmentsController < ApplicationController
 
 	def show
 		@entertainment = Entertainment.find(params[:id])
+		tmp = @entertainment.viewed + 1
+		@entertainment.update_attributes(viewed: tmp)
+
 	end
 
 	def create
@@ -31,6 +36,7 @@ class EntertainmentsController < ApplicationController
 	    end	
 
 			params[:entertainment][:catalog]="aoe"
+			params[:entertainment][:user_post]=current_user.name
 			entertainment= Entertainment.new(params[:entertainment])
 			if entertainment.save
 				flash[:success] = "OK"
