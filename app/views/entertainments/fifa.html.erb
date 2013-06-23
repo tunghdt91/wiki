@@ -9,12 +9,16 @@ $(document).ready(function(){
 });
 </script>
 
+<br/>
+<a href="<%=root_path%>">Trang chủ</a> &nbsp;>>&nbsp;<a href="<%=entertainments_path%>">Giải trí</a>
+<br/>
+
 <input type="button" value="Bài mới" class="btn pretty warning medium" id="fifa_button"/>
 <div id='new_fifa_post'>
 <br/>
 <br/>
 <br/>
-<h2>[FiFa]Tạo chủ đề mới.</h2>
+<h2 style="color:red">[FiFa]Tạo chủ đề mới.</h2>
 	<%= form_for @fifa_new_post, url: entertainments_path ,method: :post do |f|%>
 		<table>
 			<tr>
@@ -30,4 +34,36 @@ $(document).ready(function(){
 	<%= f.submit "Gửi chủ đề", class: "btn medium success pretty",id: "send_fifa_post" %>	
 	<%end%>
 </div>
+<!-- end new post -->
 
+
+<hr/>
+<table width="100%">
+	<tr align="center" bgcolor="##15A88" height="30" cellpadding="1" >
+		<th width="5%"></th>
+		<th width="65%"><font color="white" FACE="Geneva, Arial" size="2">Thread / Thread Starter</font></th>
+			<th width="5%"><font color="white" FACE="Geneva, Arial" size="2">Comment</font></th>
+			<th width="5%"><font color="white" FACE="Geneva, Arial" size="2">Viewed</font></th>
+			<th width="20%" align='center'><font color="white" FACE="Geneva, Arial" size="2">Last Post</font></th>
+		</tr>
+	<% @fifas.each do |f|%>
+		<tr  height="60" bgcolor="#F5F5FF">
+			<td><img  src="/img/thread.gif"/></td>
+			<td >Topic: <span style="font-weight: bold; "><a href="<%= entertainment_path(f.id)%>"><%= f.title%></a></span>
+			<br/>
+			<font size="2"> Đã gửi bởi</font> <font size="2" color="red"><%=f.user_post%></font> <font size="2">vào lúc <%=f.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
+			</td>
+
+			<td align="center"><%= Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{f.id}").count%></td>
+			<td align="center"><%= f.viewed %></td>
+			<% last_post_info = Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{f.id} order by created_at desc limit 1")%>
+			<td bgcolor="#E1E4F2" align='center'>
+					<% if last_post_info!=[] %>
+						<font size='1'>bài cuối bởi</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
+							<br/>
+						<font size="1"><%= last_post_info[0].created_at.strftime("%R:%M:%S %d-%m")%></font>
+					<%end%>
+			</td>
+		</tr>
+	<%end%>
+</table>

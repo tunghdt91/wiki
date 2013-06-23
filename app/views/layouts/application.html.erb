@@ -2,10 +2,18 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<%= favicon_link_tag 'favicon.ico' %>
 	<title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script>
+  	$(document).ready(function(){
+		$('#login').click(function(){
+				$("#form-login").slideToggle();
+			});
+		});
+  </script>
 </head>
 <body>
 	<div id="wrapper">
@@ -16,39 +24,111 @@
 		<div id="page">
 			<div id="header">
 				<div id="header-top">
-					<ul>
-						<% if !signed_in?%>
-							<li><%= link_to 'Đăng nhập',new_session_path%></li>
+					<div id="top-left">
+						<table width="70%">
+							<tr>
+								<td width="5%"> <span style="color: red; font-weight: bold;">Language:</span></td>
+								<td><a href="#"><img src="/img/vi.png" /></a></td>
+								<td><a href="#"><img src="/img/jp.png" /></a></td>
+								<td><a href="#"><img src="/img/en.png" /></a></td>
+							</tr>
+						</table>
+					</div>
+					<div id="top-right">
+						<ul>
+
+							<% if !signed_in?%>
+									<li><a id='login' href="#">Đăng nhập</a></li>
+								<%else%>
+									<li><%= link_to 'Thoát',signout_path, method: "delete" %></li>
+								<%end%>
+								<li>&nbsp;&nbsp;&nbsp;</li>
+							<img src="/img/people.gif" icon height="40" wight="40"/>
+							<% if !signed_in?%>
+									<li><%= link_to 'Mở tài khoản',new_user_path%></li>
 							<%else%>
-							<li><%= link_to 'Thoát',signout_path, method: "delete" %></li>
-							
-						<%end%>
-						<img src="/img/people.gif" icon height="50" wight="50"/>
-						<% if !signed_in?%>
-							<li><%= link_to 'Mở tài khoản',new_user_path%></li>
-						<%else%>
-							<li>xin chào (<span style="font-weight: bold; color: red;"><%= current_user.name %></span>)</li>
-						<% end %>
-					</ul>
+								<li>xin chào (<span style="font-weight:bold; color: red;"><%= current_user.name %></span>)</li>
+							<% end %>
+						</ul>
+					</div>
 				</div>
+		<div id='form-login'>		
+		<h1 align='center'>Sign in</h1>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <table width="60%" align="right" >
+        <tr>
+          <td widht="10%"><b>Name</b>(<span style=" color: red;">*</span>):</td>
+          <td width="80%"><%= f.text_field :name, placeholder: 'Enter your user here..',size: '45'%></td>
+        </tr>
+        <tr>
+          <td><b>Password</b>(<span style=" color: red;">*</span>):</td>
+          <td><%= f.password_field :password, placeholder: 'Enter your password here...',size: '45'%></td>
+        </tr>
+        
+         <tr>
+          <td align="center"><%= f.submit "Sign in", class: "medium warning btn pretty" %></td>
+          <td ><p>New user? <%= link_to "Sign up now!", new_user_path %></p></td>
+        </tr>
+
+      </table>
+    <% end %>
+    </div>
+
+
+
+		<!-- -->
+
 				<div class="clear"></div>
 				<div id='header-bottom'>
 					<div id="hd-left">
 						<ul>
-							<li><%= link_to 'Trang chính',root_path%></li>
-							<li><%= link_to 'Thông báo','#'%></li>
-							<li><%= link_to 'Bài mới','#'%></li>
+							<li>
+									<img src="/img/home.jpeg" width="20" height="20">
+									<li><%= link_to 'Trang chính',root_path%></li>
+							</li>
+							<li>
+									<img src="/img/alert.jpeg" width="20" height="20">
+									<li><%= link_to 'Thông báo','#'%></li>
+							</li>
+							<li>
+									<img src="/img/new-post.gif" width="20" height="20">
+									<li><%= link_to 'Bài mới','#'%></li>
+							</li>
 						</ul>
 					</div>
 					<div id="hd-right">
 						<ul>
-							<li><%= link_to 'Thành viên','#'%></li>
-							<li><%= link_to 'Sự kiện',events_path%></li>
-							<li><%= link_to 'Liên kết','#'%></li>
-							<li><%= link_to 'Giải trí',entertainments_path%></li>
-							<li><%= link_to 'Rao vặt','#'%></li>
+							<li>
+									<img src="/img/member.png" width="20" height="20">
+									<li><%= link_to 'Thành viên',users_path%></li>
+							</li>
+							<li>
+									<img src="/img/event.jpeg" width="20" height="20">
+									<li><%= link_to 'Sự kiện',events_path%></li>
+							</li>				
+							
+							<li>
+									<img src="/img/link.jpeg" width="20" height="20">
+									<li><%= link_to 'Link','#'%></li>
+							</li>
+
+							<li>
+									<img src="/img/entertainment.jpeg" width="20" height="20">
+									<li><%= link_to 'Giải trí',entertainments_path%></li>
+							</li>	
+							<li>
+									<img src="/img/raovat.jpeg" width="20" height="20">
+									<li><%= link_to 'Rao vặt','#'%></li>
+							</li>
+							
+							
+							
 							<% if signed_in?%>
-							<li><%= link_to 'Trang cá nhân',user_path(current_user)%></li>
+							<li>
+									<img src="/img/profile.jpeg" width="20" height="20">
+									<li><%= link_to 'Cá nhân',user_path(current_user)%></li>
+							</li>
+							
 							<%end%>
 						</ul>
 					</div>

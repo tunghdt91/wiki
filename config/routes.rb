@@ -12,7 +12,7 @@ Wiki::Application.routes.draw do
   resources :entertainments do
       get 'aoe', on: :collection
       get 'halflife', on: :collection
-      get 'cdtl', on: :collection
+      get 'other', on: :collection
       get 'fifa', on: :collection
       post 'comment', on: :collection
   end

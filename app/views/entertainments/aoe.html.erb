@@ -11,13 +11,15 @@ $(document).ready(function(){
 <img src="/img/banner_aoe.jpg" width="700" height="150"/>
 <div class="clear"></div>
 <br/>
+<a href="<%=root_path%>">Trang chủ</a> &nbsp;>>&nbsp;<a href="<%=entertainments_path%>">Giải trí</a>
+<br/>
 <input type="button" value="Bài mới" class="btn pretty warning medium" id="aoe_button"/>
 <br/>
 <div id='new_aoe_post'>
 <br/>
 <br/>
 <br/>
-<h2>[AOE]Tạo chủ đề mới.</h2>
+<h2 style="color:red">[AOE]Tạo chủ đề mới.</h2>
 	<%= form_for @aoe_new_post,:html => { :multipart => true }, url: entertainments_path ,method: :post do |f|%>
 		<table>
 			<tr>
@@ -29,14 +31,12 @@ $(document).ready(function(){
 				<td><%=f.text_area :content,rows: '10', cols: '70'%></td>
 			</tr>
 		</table>
-		<!-- <label for="up">Select picture(jpge,png)</label>
-    <%= file_field 'upload', 'datafile' %> -->
 	<input type="hidden" name="id" value="aoe"/>
 	<div class="clear"></div>
 	<%= f.submit "Gửi chủ đề", class: "btn medium success pretty",id: "send_aoe_post" %>	
 	<%end%>
 </div>
-
+<!-- end form new post -->
 <hr/>
 <table width="100%">
 	<tr align="center" bgcolor="##15A88" height="30" cellpadding="1" >

@@ -1,4 +1,23 @@
-<h2>Thông tin tài khoản</h2>
+<script>
+  	$(document).ready(function(){
+		$('#avatar').click(function(){
+				$("#update-avatar").slideToggle();
+			});
+		});
+  </script>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<h2>Thông tin thành viên</h2>
 <table width='60%'>
 	<tr>
 		<td>Tên</td>
@@ -35,8 +54,19 @@
 	</tr>
 	
 	<tr height="60">
-		<td widht="10%">Hình đại diện</td>
+		<td widht="10%">Hình đại diện(<a id="avatar" href="#"> Sửa</a>)</td>
 		<td widht="90%" align="left"><img src="<%=@user.avatar_path %>"  widht="60" height="60" class="img_avatar_user"/></td>
 	</tr>
 </table>
+
+<div id='update-avatar'>
+	<%= form_for @user, :html => { :multipart => true } do |f| %>
+  <label for="up">Select picture(jpge,png)</label>
+    <%= file_field 'upload', 'datafile' %>
+  <div class="clr"></div>
+  <div class="actions">
+    <%=f.submit "Change Avatar", class: "medium warning btn pretty" %>
+  </div>
+<% end %>
+</div>
 <%= link_to 'Cập nhật thông tin',edit_user_path(current_user.id)%>

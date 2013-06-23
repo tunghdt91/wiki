@@ -3,34 +3,70 @@
 			$(document).tooltip();
 		})
 		function normalImg(x){
-			x.style.height="150px";
-			x.style.width="150px";
+			x.style.height="100px";
+			x.style.width="100px";
 		}
 
 		function bigImg(x){
-			x.style.height="200px";
-			x.style.width="200px";
+			x.style.height="150px";
+			x.style.width="150px";
 		}
 	</script>
 	<br/>
 	<br/>
 <h2>Game Online-Offline</h2>
-<a href="<%= aoe_entertainments_path%>"><img border="0" src="/img/aoe.jpeg" alt="aoe" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="AOE" width="150" height="150"/>
+<a href="<%= aoe_entertainments_path%>"><img border="0" src="/img/aoe.jpeg" alt="aoe" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="AOE" width="100" height="100"/>
 </a>
 
-<a href="<%= halflife_entertainments_path%>"><img border="0" src="/img/halflife.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Halflife" width="150" height="150"/></a>
+<a href="<%= halflife_entertainments_path%>"><img border="0" src="/img/halflife.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Halflife" width="100" height="100"/></a>
 
-<a href="<%= fifa_entertainments_path%>"><img border="0" src="/img/fifa.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Fifa" width="150" height="150"/>
+<a href="<%= fifa_entertainments_path%>"><img border="0" src="/img/fifa.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Fifa" width="100" height="100"/>
 </a>
 
-<a href="<%= cdtl_entertainments_path%>"><img border="0" src="/img/cdtl.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Silkroad" width="150" height="150"/></a>
+<a href="<%= other_entertainments_path%>"><img border="0" src="/img/cdtl.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Silkroad" width="100" height="100"/></a>
 
 <div class="clear"></div>
 <br/>
 <br/>
 <h2>Thể thao-Du lịch</h2>
 
-<a href='#'><img border="0" src="/img/bongda.jpeg" alt="aoe" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Bong Da" width="150" height="150"/>
+<a href='#'><img border="0" src="/img/bongda.jpeg" alt="aoe" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Bong Da" width="100" height="100"/>
 </a>
-<img border="0" src="/img/boiloi.jpeg" alt="boi loi" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Boi loi" width="150" height="150"/>
-<img border="0" src="/img/caulong.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Cau Long" width="150" height="150"/>
+<img border="0" src="/img/boiloi.jpeg" alt="boi loi" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Boi loi" width="100" height="100"/>
+<img border="0" src="/img/caulong.jpeg" alt="new-email" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Cau Long" width="100" height="100"/>
+<div class="clear"></div>
+<hr/>
+
+<h1 style="color: red;">Các bài viết liên quan :</h1>
+<table width="100%">
+	<tr align="center" bgcolor="##15A88" height="30" cellpadding="1" >
+		<th width="5%"></th>
+		<th width="60%"><font color="white" FACE="Geneva, Arial" size="2">Thread / Thread Starter</font></th>
+		<th width="5%"><font color="white" FACE="Geneva, Arial" size="2">Topic</font></th>
+			<th width="5%"><font color="white" FACE="Geneva, Arial" size="2">Comment</font></th>
+			<th width="5%"><font color="white" FACE="Geneva, Arial" size="2">Viewed</font></th>
+			<th width="20%" align='center'><font color="white" FACE="Geneva, Arial" size="2">Last Post</font></th>
+		</tr>
+	<% @entertainments.each do |e|%>
+		<tr  height="60" bgcolor="#F5F5FF">
+			<td><img  src="/img/thread.gif"/></td>
+			<td >Topic: <span style="font-weight: bold; "><a href="<%= entertainment_path(e.id)%>"><%= e.title%></a>
+				</span>
+				<br/>
+				<font size="2"> Đã gửi bởi</font> <font size="2" color="red"><%=e.user_post%></font> <font size="2">vào lúc <%=e.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
+			</td>
+
+			<td align="center"><a href="/entertainments/<%= e.catalog%>"><%=e.catalog%></a></td>
+			<td align="center"><%= Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{e.id}").count%></td>
+			<td align="center"><%= e.viewed %></td>
+			<% last_post_info = Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{e.id} order by created_at desc limit 1")%>
+			<td bgcolor="#E1E4F2" align='center'>
+					<% if last_post_info!=[] %>
+						<font size='1'>bài cuối bởi</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
+							<br/>
+						<font size="1"><%= last_post_info[0].created_at.strftime("%R:%M:%S %d-%m")%></font>
+					<%end%>
+			</td>
+		</tr>
+	<%end%>
+</table>

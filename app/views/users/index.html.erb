@@ -1,0 +1,109 @@
+<script>
+  	$(document).ready(function(){
+		$('#click-view-more').click(function(){
+				$("#view-more").slideToggle();
+				$("#click-view-more").slideUp();
+			});
+		});
+  </script>
+
+Đây là trang công khai, bất cứ ai cũng có thể tham gia .<br/>
+
+<i>Trang web  là nơi<span id="click-view-more" style="color: blue; font-weight: bold;"> ...xem thêm </span><span id="view-more"> tụ tập ,chia sẻ kinh ngiệm cũng như đăng tải thông tin,hiện tại đang trong quá trình hình thành và phát triẻn<br/>
+Theo thời gian cùng với sự phát triển của trang, số lượng các thành viên & bài viết cũng tăng lên chúng ta hy vọng sẽ có một trang web đồ sộ với nhiều nội dung hấp dẫn được cập nhập</span></i>
+<hr size="3" style="color:#FFFFFF; background-color:#FFFFFF"/>
+<span style="font-size: 15px; color: #808080; align: right;"><%=User.all.count%> thành viên </span>
+<br/>
+
+<%member_row=User.all.count/3 - 1 %>
+<% m = User.all.count%3%>
+<table width="100%">
+	<% for i in 0..member_row%>
+		<tr height="200">
+			<td width='33%'>
+				<table width="100%" >
+					<tr>
+						<td ><img src="<%= User.find(i*3+1).avatar_path%>" width="100" height="120"/></td>
+						<td>
+								<a href="<%= user_path(i*3+1)%>"><p style="font-weight: bold; color: #3D85E0; font-size: 20px;"><%=User.find(i*3+1).name %></p></a>
+								<font color="orange" size="2">Địa chỉ:</font> <font size="2"><%= User.find(i*3+1).address%></font><br/>
+								<font size="1" color="#808080">Đã tham gia từ ngày :<%= User.find(i*3+1).created_at.strftime("%d/%m/%Y")%></font>
+						</td>
+					</tr>
+				</table>
+			</td>
+			
+			<td width='33%'>
+				<table width="100%">
+					<tr>
+						<td><img src="<%= User.find(i*3+2).avatar_path%>" width="100" height="120" /></td>
+						<td>
+								<a href="<%= user_path(i*3+2)%>"><p style="font-weight: bold; color: #3D85E0; font-size: 20px;"><%=User.find(i*3+2).name %></p></a>
+								<font color="orange" size="2">Địa chỉ:</font> <font size="2"><%= User.find(i*3+2).address%></font><br/>
+								<font size="1" color="#808080">Đã tham gia từ ngày :<%= User.find(i*3+2).created_at.strftime("%d/%m/%Y")%></font>
+						</td>
+					</tr>
+				</table>
+			</td>
+			
+			<td width='33%'>
+				<table width="100%">
+					<tr>
+						<td><img src="<%= User.find(i*3+3).avatar_path%>" width="100" height="120"/></td>
+						<td>
+								<a href="<%= user_path(i*3+3)%>"><p style="font-weight: bold; color: #3D85E0; font-size: 20px;"><%=User.find(i*3+3).name %></p></a>
+								<font color="orange" size="2">Địa chỉ:</font> <font size="2"><%= User.find(i*3+3).address%></font><br/>
+								<font size="1" color="#808080">Đã tham gia từ ngày :<%= User.find(i*3+3).created_at.strftime("%d/%m/%Y")%></font>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	<%end%>
+	
+	<% if m==1%>
+		<tr height="200">
+			<td width='33%'>
+				<table width="100%">
+					<tr>
+						<td><img src="<%= User.find(i*3+4).avatar_path%>" width="100" height="120"/></td>
+						<td>
+								<a href="<%= user_path(i*3+4)%>"><p style="font-weight: bold; color: #3D85E0; font-size: 20px;"><%=User.find(i*3+4).name %></p></a>
+								<font color="orange" size="2">Địa chỉ:</font> <font size="2"><%= User.find(i*3+4).address%></font><br/>
+								<font size="1" color="#808080">Đã tham gia từ ngày :<%= User.find(i*3+4).created_at.strftime("%d/%m/%Y")%></font>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	<%end%>
+
+	<% if m==2%>
+		<tr height="200">
+			<td width='33%'>
+				<table width="100%">
+					<tr>
+						<td><img src="<%= User.find(i*3+4).avatar_path%>" width="100" height="120"/></td>
+						<td>
+								<a href="<%= user_path(i*3+4)%>"><p style="font-weight: bold; color: #3D85E0; font-size: 20px;"><%=User.find(i*3+4).name %></p></a>
+								<font color="orange" size="2">Địa chỉ:</font> <font size="2"><%= User.find(i*3+4).address%></font><br/>
+								<font size="1" color="#808080">Đã tham gia từ ngày :<%= User.find(i*3+4).created_at.strftime("%d/%m/%Y")%></font>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td width='33%'>
+				<table width="100%">
+					<tr>
+						<td><img src="<%= User.find(i*3+5).avatar_path%>" width="100" height="120"/></td>
+						<td>
+								<a href="<%= user_path(i*3+5)%>"><p style="font-weight: bold; color: #3D85E0; font-size: 20px;"><%=User.find(i*3+5).name %></p></a>
+								<font color="orange" size="2">Địa chỉ:</font> <font size="2"><%= User.find(i*3+5).address%></font><br/>
+								<font size="1" color="#808080">Đã tham gia từ ngày :<%= User.find(i*3+5).created_at.strftime("%d/%m/%Y")%></font>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	<%end%>
+</table>

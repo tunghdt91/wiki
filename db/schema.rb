@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(:version => 20130622021245) do
     t.string   "catalog"
     t.string   "title"
     t.string   "content"
-    t.string   "picture"
-    t.integer  "price"
     t.string   "user_post"
     t.integer  "viewed",     :default => 1
     t.datetime "created_at",                :null => false

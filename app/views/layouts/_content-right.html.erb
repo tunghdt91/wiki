@@ -14,10 +14,10 @@
 <div id="statistic">
 	Hôm nay là : <span style="font-weight: bold; color: red;"> <%= Time.now.strftime('%d')%> - <%= Time.now.strftime('%m')%> - <%= Time.now.strftime('%Y')%></span><br/>
 	Tổng số thành viên: <span style="font-weight: bold; color: blue;"> <%= User.all.count%></span><br/>
-
+	Chủ đề :<span style="font-weight: bold; color: blue;"> <%= Entertainment.all.count%></span><br/>
 	<%total_post= Post.all.count + Entertainmentpost.all.count%>
 	Tổng số bài viết: <span style="font-weight: bold; color: blue;"> <%= total_post%></span><br/>
-	Thành Viên mới nhất:<span style="font-weight: bold; color: red;"><%=User.first.name%></span><br/>
+	Thành Viên mới nhất:<a href="<%=user_path(User.first.id)%>"><span style="font-weight: bold; color: red;"><%=User.first.name%></span></a><br/>
 </div>
 
 <div id="title-event">Sự kiện</div>
@@ -31,17 +31,17 @@
 <%user = User.find(rand(1..(User.all.count)) )%>
 <div id="img-member">
 	<div id="avatar-member">
-		<img src="/img/avatar.png" alt="framgia"/>
+		<img src="<%=user.avatar_path%>" alt="framgia" width="100" height="100"/>
 	</div>
 	<div id="info-member">
 		Tên:<span style="color: red; font-weight: bold;"><a href="<%= user_path(user.id)%>"><%= user.name%></a></span><br/>
-		Quê Quán:<%= user.address%><br/>
-		Sinh nhật :<%= user.birth_day%><br/>
+		Quê Quán: <span style="color: red; "><%= user.address%></span><br/>
+		Sinh nhật: <span style="color: blue; "><%= user.birth_day%></span><br/>
 		Ngày gia nhập:<br/>
 		
 	</div>
 	<div class="clear"></div>
-	Sở thích: <%= user.sothich%><br/>
-	Câu nói ưu thích:<%= user.caunoiuathich%><br/>
+	Sở thích: <span style="color: red; "><%= user.sothich%></span><br/>
+	Câu nói ưu thích: <span style="color: red; "><%= user.caunoiuathich%></span><br/>
 </div>
 

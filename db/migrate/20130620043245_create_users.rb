@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :caunoiuathich
       t.integer :group
       t.string :level
-      t.string :avatar_path,default: '/img/avatar.png'
+      t.string :avatar_path,default: '/img/avatar/avatar.png'
       t.string :remember_token 
 
       t.timestamps

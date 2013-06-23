@@ -1,40 +1,64 @@
-
-<%count=1%>
+<!-- Load jQuery build -->
+<script>
+	$( document ).ready(function(){
+		$("#quote").click(function(){
+			// document.getElementById("mce_80").val("aaaaaaaaa");
+			 // document.getElementById("report_catalog_id").value;
+		});
+	});
+</script>
+<a href="<%=root_path%>">Trang chủ</a> &nbsp;>>&nbsp;<a href="<%=entertainments_path%>">Giải trí</a>&nbsp;>>&nbsp;<a href="/entertainments/<%= @entertainment.catalog%>"><%=@entertainment.catalog%></a>
+<br/>
+<br/>
+<%count=0%>
 <table width="100%" border="0" cellpadding="1" cellspacing="0">
 	<tr bgcolor="#425989" height="30">
-		<td widht="60%" align="left">
-			<table>
+		<td widht="60%">
+			<table widht="100%">
 				<tr>
-					<td><img src="/img/post-icon.gif"/></td>
-					<td><font color="white" size="2"><%= @entertainment.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
+					<td widht="30%"><img src="/img/post-icon.gif"/></td>
+					<td><font color="white" size="2">Gửi vào lúc: <%= @entertainment.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
 				</tr>
 			</table>
 		</td>
 		<td align="right"><font color="white">#<%= count%></font></td>
 	</tr>	
 
+	<%id_user = User.where('name=?',@entertainment.user_post)[0].id%>
 	<tr  bgcolor="#E1E4F2" height="80">
-		<td widht="20%">
-			<table>
+		<td widht="80%">
+			<table width="20%">
 				<tr>
 					<td width="5%" align="left"><img src="<%= User.where('name=?',@entertainment.user_post)[0].avatar_path %>" widht="80" height="60"></td>
-					<td><font color="#748EBB" size="5" ><%= @entertainment.user_post%></font></td>
+					<td><font color="#748EBB" size="5" ><a href="<%=user_path(id_user) %>"><%= @entertainment.user_post%></a></font></td>
 				</tr>
 			</table>
 		</td>
-		<td align="right"><font color="orange"><%= User.where('name=?',@entertainment.user_post)[0].birth_day%></font>
+		<td width="20%">
+			<font color="black" size="2">Ngày sinh: <%= User.where('name=?',@entertainment.user_post)[0].birth_day%></font>
+			<br/>
+			<font color="black" size="2">Địa chỉ: <%= User.where('name=?',@entertainment.user_post)[0].address%></font>
+			<br/>
+			<font color="black" size="2">Bài viết: </font>
+		
 		</td>
 	</tr>
 
 </table>
-<table bgcolor="#F5F5FF" cellpadding="1" cellspacing="2" id="table-post" width="100%">
+<table bgcolor="#F5F5FF" cellpadding="20" cellspacing="2" id="table-post" width="100%">
 	<tr>
-		<td align="left"><font style=" font-weigth: bold" size="5" color="#455D8B" ><%= @entertainment.title%></font></td>
+		<td align="left"><font style=" font-weigth: bold" size="3" color="red" ><%= @entertainment.title%></font>
+<!-- 		<hr size="1" style="color:#FFFFFF; background-color:#FFFFFF"> -->
+	</td>
 	</tr>	
+
 	<tr >		
-		<td><html><%= @entertainment.content%></html></td>
+		<td><html><%= @entertainment.content.html_safe %></html></td>
 	</tr>
-	<tr height="20"><td></td></tr>
+	<tr>
+		<td width="80%">
+		</td>
+		<td width="20%"><img src="/img/quote.gif" id="quote"></td>
 </table>
 <div class="clear"></div>
 <br/>
@@ -49,40 +73,47 @@
       	<table width="100%" border="0" cellpadding="1" cellspacing="0">
 						<tr bgcolor="#425989" height="30">
 								<td widht="60%" align="left">
-									<table>
+									<table width="100%">
 										<tr>
-											<td><img src="/img/post-icon.gif"/></td>
-											<td><font color="white" size="2"><%= c.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
+											<td width="10%"><img src="/img/post-icon.gif"/></td>
+											<td width="90%"><font color="white" size="2">Gửi vào lúc:<%= c.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
 										</tr>
 									</table>
 								</td>
-								
-								<td align="right">
-									<table>
-											<tr>
-												<td><font color="orange"><%= User.where('id=?',c.user_id)[0].birth_day%></font>
-												</td>
-												<td align="right"><font color="white">#<%= count%></font></td>
-											</tr>
-									</table>
-								</td>
+								<td align="right"><font color="white">#<%= count%></font></td>
 						</tr>	
+
 						<tr  bgcolor="#E1E4F2" height="80">
-							<td width="5%" align="left"><img src="<%= User.where('id=?',c.user_id)[0].avatar_path %>" widht="80" height="60"></td>
-							<td><font color="#748EBB" size="5" ><%= User.where('id=?',c.user_id)[0].name%></font></td>
+							<td widht="80%">
+								<table width="20%">
+									<tr>
+										<td width="5%" align="left"><img src="<%= User.find(c.user_id).avatar_path %>" widht="80" height="60"></td>
+										<td><font color="#748EBB" size="5" ><a href="<%=user_path(c.user_id) %>"><%= User.find(c.user_id).name%></a></font></td>
+									</tr>
+								</table>
+							</td>
+
+							<td width="20%">
+								<font color="black" size="2">Ngày sinh: <%= User.find(c.user_id).birth_day%>
+								</font>
+								<br/>
+								<font color="black" size="2">Địa chỉ: <%= User.find(c.user_id).address%></font>
+								<br/>
+								<font color="black" size="2">Bài viết: </font>
+
+							</td>
 						</tr>
 				</table>
 
-				<table bgcolor="#F5F5FF" cellpadding="1" cellspacing="2" id="table-post" width="100%">
+				<table bgcolor="#F5F5FF" cellpadding="20" cellspacing="2" id="table-post" width="100%">
 					<tr>
-						<td align="left"><font style=" font-weigth: bold" size="5" color="#455D8B" >TItle here</font></td>
+						<td align="left"><font style=" font-weigth: bold" size="5" color="#455D8B" >Title here</font></td>
 					</tr>
 					<tr>
 						<td>
 							<%= c.content.html_safe %>
 						</td>
 					</tr>
-					<tr height="20"><td></td></tr>
 				</table>
 			<div class="clear"></div>
 			<br/>
@@ -105,3 +136,5 @@
 		document.getElementById('new-content-post1').focus();
 	});
 </script>
+
+<p id="aaaa"></p>

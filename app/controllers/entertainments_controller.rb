@@ -1,21 +1,28 @@
 class EntertainmentsController < ApplicationController
-	before_filter :signed_in_user, only: [:aoe, :cdtl, :fifa, :halflife]
+	before_filter :signed_in_user, only: [:aoe, :other, :fifa, :halflife]
 
+	def index
+		@entertainments=Entertainment.find(:all, :order => "updated_at DESC")
+	end
+	
 	def aoe
 		@aoe_new_post = Entertainment.new
 		@aoes = Entertainment.where('catalog=?',"aoe")
 	end
 
-	def cdtl
-		@cdtl_new_post = Entertainment.new
+	def other
+		@other_new_post = Entertainment.new
+		@others= Entertainment.where('catalog=?','other')
 	end
 
 	def fifa
 		@fifa_new_post = Entertainment.new
+		@fifas = Entertainment.where('catalog=?',"fifa")
 	end
 
 	def halflife
 		@halflife_new_post = Entertainment.new
+		@halflifes = Entertainment.where('catalog=?',"halflife")
 	end
 
 	def show
@@ -35,14 +42,6 @@ class EntertainmentsController < ApplicationController
 
 	def create
 		if params[:id]=="aoe"
-			if params[:upload].present?
-				name = params[:upload][:datafile].original_filename
-				directory = 'public/img/market'
-				path = File.join(directory,name)
-	    	File.open(path, "wb") { |f| f.write(params[:upload][:datafile].read)}
-	    	params[:entertainment][:picture]=name
-	    end	
-
 			params[:entertainment][:catalog]="aoe"
 			params[:entertainment][:user_post]=current_user.name
 			entertainment= Entertainment.new(params[:entertainment])
@@ -55,20 +54,22 @@ class EntertainmentsController < ApplicationController
 			end
 		end
 
-		if params[:id]=="cdtl"
-			params[:entertainment][:catalog]="cdtl"
+		if params[:id]=="other"
+			params[:entertainment][:catalog]="other"
+			params[:entertainment][:user_post]=current_user.name
 			entertainment= Entertainment.new(params[:entertainment])
 			if entertainment.save
 				flash[:success] = "OK"
-				redirect_to cdtl_entertainments_path
+				redirect_to other_entertainments_path
 			else
 				flash[:error] ="Failse"
-				redirect_to cdtl_entertainments_path
+				redirect_to other_entertainments_path
 			end
 		end
 
 		if params[:id]=="fifa"
 			params[:entertainment][:catalog]="fifa"
+			params[:entertainment][:user_post]=current_user.name
 			entertainment= Entertainment.new(params[:entertainment])
 			if entertainment.save
 				flash[:success] = "OK"
@@ -81,6 +82,7 @@ class EntertainmentsController < ApplicationController
 
 		if params[:id]=="halflife"
 			params[:entertainment][:catalog]="halflife"
+			params[:entertainment][:user_post]=current_user.name
 			entertainment= Entertainment.new(params[:entertainment])
 			if entertainment.save
 				flash[:success] = "OK"

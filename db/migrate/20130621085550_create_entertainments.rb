@@ -4,8 +4,6 @@ class CreateEntertainments < ActiveRecord::Migration
       t.string :catalog
       t.string :title
       t.string :content
-      t.string :picture
-      t.integer :price
       t.string :user_post
       t.integer :viewed,  default: 1
       t.timestamps
