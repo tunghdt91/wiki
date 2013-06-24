@@ -16,7 +16,7 @@
 		<td widht="60%">
 			<table widht="100%">
 				<tr>
-					<td widht="30%"><img src="/img/post-icon.gif"/></td>
+					<td widht="30%"><img src="/img/post-icon.gif" id="thread"/></td>
 					<td><font color="white" size="2">Gửi vào lúc: <%= @entertainment.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
 				</tr>
 			</table>
@@ -29,7 +29,7 @@
 		<td widht="80%">
 			<table width="20%">
 				<tr>
-					<td width="5%" align="left"><img src="<%= User.where('name=?',@entertainment.user_post)[0].avatar_path %>" widht="80" height="60"></td>
+					<td width="5%" align="left"><img src="<%= User.where('name=?',@entertainment.user_post)[0].avatar_path %>" widht="60" height="60" class="show_picture_post"></td>
 					<td><font color="#748EBB" size="5" ><a href="<%=user_path(id_user) %>"><%= @entertainment.user_post%></a></font></td>
 				</tr>
 			</table>
@@ -75,8 +75,8 @@
 								<td widht="60%" align="left">
 									<table width="100%">
 										<tr>
-											<td width="10%"><img src="/img/post-icon.gif"/></td>
-											<td width="90%"><font color="white" size="2">Gửi vào lúc:<%= c.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
+											<td width="5%" aligin="left"><img src="/img/post-icon.gif" id="thread"/></td>
+											<td width="95%"><font color="white" size="2">Gửi vào lúc:<%= c.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
 										</tr>
 									</table>
 								</td>
@@ -87,7 +87,7 @@
 							<td widht="80%">
 								<table width="20%">
 									<tr>
-										<td width="5%" align="left"><img src="<%= User.find(c.user_id).avatar_path %>" widht="80" height="60"></td>
+										<td width="5%" align="left"><img src="<%= User.find(c.user_id).avatar_path %>" widht="80" height="60" class="show_picture_post"></td>
 										<td><font color="#748EBB" size="5" ><a href="<%=user_path(c.user_id) %>"><%= User.find(c.user_id).name%></a></font></td>
 									</tr>
 								</table>

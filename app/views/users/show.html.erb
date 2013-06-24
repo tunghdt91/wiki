@@ -54,14 +54,14 @@
 	</tr>
 	
 	<tr height="60">
-		<td widht="10%">Hình đại diện(<a id="avatar" href="#"> Sửa</a>)</td>
+		<td widht="10%">Hình đại diện (<a id="avatar" href="#"> Sửa</a>)</td>
 		<td widht="90%" align="left"><img src="<%=@user.avatar_path %>"  widht="60" height="60" class="img_avatar_user"/></td>
 	</tr>
 </table>
 
 <div id='update-avatar'>
 	<%= form_for @user, :html => { :multipart => true } do |f| %>
-  <label for="up">Select picture(jpge,png)</label>
+  <label for="up"></label>
     <%= file_field 'upload', 'datafile' %>
   <div class="clr"></div>
   <div class="actions">

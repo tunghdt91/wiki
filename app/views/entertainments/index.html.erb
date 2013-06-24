@@ -49,7 +49,7 @@
 		</tr>
 	<% @entertainments.each do |e|%>
 		<tr  height="60" bgcolor="#F5F5FF">
-			<td><img  src="/img/thread.gif"/></td>
+			<td><img  src="/img/thread.gif" id="thread"/></td>
 			<td >Topic: <span style="font-weight: bold; "><a href="<%= entertainment_path(e.id)%>"><%= e.title%></a>
 				</span>
 				<br/>

@@ -1,13 +1,16 @@
 Wiki::Application.routes.draw do
 
-  root to: 'statics#home'
+  root to: 'homes#home'
   match '/signout', to: 'sessions#destroy', via: :delete
-
+  resources :events
+  resources :links
+  resources :homes do
+    post 'comment', on: :collection
+  end
+  
   resources :statics do
     get 'home', on: :collection
   end
-
-  resources :events
 
   resources :entertainments do
       get 'aoe', on: :collection

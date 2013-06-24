@@ -48,7 +48,7 @@ $(document).ready(function(){
 		</tr>
 	<% @fifas.each do |f|%>
 		<tr  height="60" bgcolor="#F5F5FF">
-			<td><img  src="/img/thread.gif"/></td>
+			<td><img  src="/img/thread.gif" id="thread"/></td>
 			<td >Topic: <span style="font-weight: bold; "><a href="<%= entertainment_path(f.id)%>"><%= f.title%></a></span>
 			<br/>
 			<font size="2"> Đã gửi bởi</font> <font size="2" color="red"><%=f.user_post%></font> <font size="2">vào lúc <%=f.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>

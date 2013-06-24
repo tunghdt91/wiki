@@ -123,11 +123,6 @@ margin: 1px auto;
 	margin-right: 30px;
 	float: left;
 }
-#hd-right ul  li li,img {
-	display: inline;
-	margin-right: -29px;
-}
-
 
 #hd-right {
 	float: right;
@@ -141,8 +136,9 @@ margin: 1px auto;
 }
 #hd-right ul  li li,img {
 	display: inline;
-	margin-right: -29px;
+	margin-right: -25px;
 }
+
 
 /*end header */
 #primary{
@@ -201,7 +197,9 @@ margin: 1px auto;
 	width: 350px;
 	padding-left:  10px;
 }
-
+.event {
+	margin-right: -5px;
+}
 
 #title-img {
 	margin-top: 10px;
@@ -300,6 +298,99 @@ margin: 1px auto;
 	display: none;
 }
 
+#thread {
+	margin-right: 0px;
+}
+
+.user_pic {
+	margin-right: 0px;
+}
+
+#img-logo img {
+	margin-right: 25px;
+}
+
+.show_picture_post{
+	margin-right: 0px;
+}
+
+
+#error_explanation{
+	color: red;
+	font-weight: bold;
+}
+
+.tbl_post{
+	border: 1px solid #D6D6D6;
+}
+
+.tbl_post img{
+	margin-right: 300px;
+	width: 50%;
+	height: 50%;
+}
+
+.home_post {
+	margin-top: 20px;
+}
+
+.content-html{
+	margin: 40px 10px 50px 10px;
+}
+
+.user_post_home{
+	width: 100%;
+	margin-top: 1px;
+}
+
+.info_user_home {
+	float: left;
+	width: 120px;
+	background: #F0F7FC;
+}
+
+.info_user_home img {
+	margin-right: 5px;
+}
+
+.info1{
+	background: #D7EDFC;
+
+}
+.content_user_home {
+	float: right;
+	width: 540px;
+}
+
+.content_user_home img{
+	float: left;
+}
+
+.time_post {
+	margin-left: 130px;
+}
+
+.time_post .ti{
+	float: left;
+	width: 550px;
+}
+.time_post .count_post {
+	float: right;
+	margin-right: 10px;
+}
+
+.action-post {
+	margin-left: 120px;
+}
+
+.action-post ul li{
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.action2 {
+	display: none;
+}
 /*html csss*/
 input {
   height: 30px;
