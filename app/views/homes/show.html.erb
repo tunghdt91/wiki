@@ -1,0 +1,121 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+        $(function(){
+            $(document).tooltip();
+        })
+
+        // $(document).ready(function(){
+        // $('#edit-post').click(function(){
+        //         $("#action2").slideToggle();
+        //     });
+        // });
+</script>
+
+
+    <div class="home_post">
+        <table width="100%" class="tbl_post" >
+            <tr height="90" bgcolor="#F1F1EC">
+                <td width="100%" align="left" valign="middle"><a href="<%= home_path(@home.id)%>"><span style="font-size: 27px; color: black; font-weight: bold;"><%=@home.title%></span></a></td>
+            </tr>
+
+            <tr >
+                <td width="100%" align="left">
+                    <span style="color:#808080">&nbsp;&nbsp; sửa lần cuối vào lúc <%=@home.updated_at.strftime("%H:%M ngày %d/%m/%Y")%>&nbsp;&nbsp;&nbsp;bởi...</span><br/> 
+                    Tạo bởi <a href="<%= user_path(@home.user_id)%>"><font face="verdana" size="4" color="#1769B4"><%=User.find(@home.user_id).name%></font>
+                    </a> vào <a><%=@home.created_at.strftime("%d-%m")%></a> lúc <a><%=@home.created_at.strftime("%H:%M")%></a>.
+                <hr color="#F1F1EC"/>
+                </td>
+            </tr>
+            
+            <tr >
+                <td><div class="content-html"><%=@home.content.html_safe%></div></td>
+            </tr>
+            <tr height='30px'>
+                <td><div class="fb-like" data-href="http://localhost:3000/homes/<%=@home.id%>" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div></td>
+            </tr>
+            <tr >
+                <td>
+                    <span style="color:#808080">Số lần đọc: <%=@home.viewed%></span>&nbsp;&nbsp;&nbsp;
+                    <span style= "color:#808080">Comment: <%=@home.comment%></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+<!--  end main post -->
+<!-- show comment post -->
+<%count = 0%>
+<% if @home.homecomments.any? %>
+<br/>
+<% @comment = @home.homecomments.all %>
+    <% @comment.each do |c|%>
+        <% count= count + 1%>
+        <div class="user_post_home">
+            <div class="info_user_home">
+              <img src="<%=User.find(c.user_id).avatar_path%>" width="100" height="100"/>
+              <div class="clear"></div>
+                <div class="info1">
+                    <center><span style="color: #175F93; font-weight: bold; font-size: 16px;"><a href="<%=user_path(c.user_id)%>"><%= User.find(c.user_id).name%></a></span></center>
+                    <center><span style="font-size: 14px;">Thành viên</span></center>
+                </div>
+            </div>
+            <div class="content_user_home">
+                <%=c.content.html_safe%>
+            </div>
+            <div class="clear"></div>
+            <div class="time_post">
+                <div class="ti"><span style= "color:#808080">gửi vào lúc <%= c.created_at.strftime("%H:%M %d/%m")%></span>
+                </div>
+                <div class="count-post"><span style= "color:#808080">#<%=count%></span></div>
+            </div>
+            <div class="action-post">
+                <ul>
+                    <li><img src="/img/edit.jpeg" width="20" height="20" title="Sửa bài viết" id="edit-post"/></li>
+                    <li><img src="/img/delete.jpeg" width="20" height="20" title="Xóa bài viết" id="del-post"/></li>
+                </ul>
+            </div>
+        </div>  
+     <div class="clear"></div>
+     <hr color="#F1F1EC"/>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+     <!-- open edit -->
+    <%= form_for c, url: edit_home_path(c.id) do |f| %>
+        <div class="clr"></div>
+        <div class="action2">
+        <%=f.text_field :content%>
+        <%=f.submit "Lưu ", class: "medium warning btn pretty" %>
+        </div>
+    <% end %>
+
+     <!-- close edit -->
+
+     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <%end%>
+<%else%>
+    <p style="color:#808080;" >Hiện chưa có comment nào .Hãy là người đầu tiên</p>  
+<%end%>
+
+<%if !signed_in?%>
+    <p style="color:#808080;" >Bạn chưa đăng nhập. Hãy <a href="<%=new_session_path%>">đăng nhập</a> để có thể thảo luận</p>
+<%else%>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <span style="font-weight: bold; color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trả lời nhanh:</span>(<b>HTML <font color="blue">on</font></b>)
+    <%= form_for :homes, url: comment_homes_path, method: :post do|f| %>
+        <center><textarea id = "new-content-post1" rows="10" cols="70" name="content" class=""></textarea></center>
+         <input type="hidden" name ="id" value = "<%=@home.id %>" />
+        <div class="clear"></div>
+         <%= f.submit "Gửi trả lời" ,class: " btn medium pretty success"%>
+    <%end%>
+<%end%>

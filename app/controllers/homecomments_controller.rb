@@ -1,0 +1,2 @@
+class HomecommentsController < ApplicationController
+end

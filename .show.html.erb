@@ -1,0 +1,109 @@
+<font size="4" color="red">[AOE]</font>-<font size="3"><a href="#"><%= @entertainment.title%></a></font>
+<br/>
+<br/>
+<%count=1%>
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+	<tr bgcolor="#425989" height="30">
+		<td widht="60%" align="left">
+			<table>
+				<tr>
+					<td><img src="/img/post-icon.gif"/></td>
+					<td><font color="white" size="2"><%= @entertainment.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
+				</tr>
+			</table>
+		</td>
+		<td align="right"><font color="white">#<%= count%></font></td>
+	</tr>	
+
+	<tr  bgcolor="#E1E4F2" height="80">
+		<td widht="20%">
+			<table>
+				<tr>
+					<td width="5%" align="left"><img src="<%= User.where('name=?',@entertainment.user_post)[0].avatar_path %>" widht="80" height="60"></td>
+					<td><font color="#748EBB" size="5" ><%= @entertainment.user_post%></font></td>
+				</tr>
+			</table>
+		</td>
+		<td align="right"><font color="orange"><%= User.where('name=?',@entertainment.user_post)[0].birth_day%></font>
+		</td>
+	</tr>
+
+</table>
+<table bgcolor="#F5F5FF" cellpadding="1" cellspacing="2" id="table-post" width="100%">
+	<tr>
+		<td align="left"><font style=" font-weigth: bold" size="5" color="#455D8B" ><%= @entertainment.title%></font></td>
+	</tr>	
+	<tr >		
+		<td><html><%= @entertainment.content%></html></td>
+	</tr>
+	<tr height="20"><td></td></tr>
+</table>
+<div class="clear"></div>
+<br/>
+
+<!--  -->
+<!--  will_paginate -->
+ 	<% if @entertainment.entertainmentposts.any? %>
+      <h3>(<span style="color: red; font-weight: bold;"><%= @entertainment.entertainmentposts.count %></span>) Comment</h3>
+        <% @comment = @entertainment.entertainmentposts.all %>
+      <% @comment.each do |c|%>
+      	<% count= count + 1%>
+      	<table width="100%" border="0" cellpadding="1" cellspacing="0">
+						<tr bgcolor="#425989" height="30">
+								<td widht="60%" align="left">
+									<table>
+										<tr>
+											<td><img src="/img/post-icon.gif"/></td>
+											<td><font color="white" size="2"><%= c.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
+										</tr>
+									</table>
+								</td>
+								
+								<td align="right">
+									<table>
+											<tr>
+												<td><font color="orange"><%= User.where('id=?',c.user_id)[0].birth_day%></font>
+												</td>
+												<td align="right"><font color="white">#<%= count%></font></td>
+											</tr>
+									</table>
+								</td>
+						</tr>	
+						<tr  bgcolor="#E1E4F2" height="80">
+							<td width="5%" align="left"><img src="<%= User.where('id=?',c.user_id)[0].avatar_path %>" widht="80" height="60"></td>
+							<td><font color="#748EBB" size="5" ><%= User.where('id=?',c.user_id)[0].name%></font></td>
+						</tr>
+				</table>
+
+				<table bgcolor="#F5F5FF" cellpadding="1" cellspacing="2" id="table-post" width="100%">
+					<tr>
+						<td align="left"><font style=" font-weigth: bold" size="5" color="#455D8B" >TItle here</font></td>
+					</tr>
+					<tr>
+						<td>
+							<%= c.content.html_safe %>
+						</td>
+					</tr>
+					<tr height="20"><td></td></tr>
+				</table>
+			<div class="clear"></div>
+			<br/>
+			<br/>
+		<%end%>
+  <%else%>
+      <h3>0 Comment</h3>
+  <% end %>
+<!--  -->
+<span style="font-weight: bold; color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trả lời nhanh:</span>(<b>HTML <font color="blue">on</font></b>)
+<%= form_for :entertainments, url: comment_entertainments_path, method: :post do|f| %>
+  <center><textarea id = "new-content-post1" rows="10" cols="70" name="content" class=""></textarea></center>
+  <input type="hidden" name ="id" value = "<%=@entertainment.id %>" />
+  <div class="clear"></div>
+  <%= f.submit "Gửi trả lời" ,class: " btn medium pretty success"%>
+<%end%>
+
+<script type="text/javascript">
+	$(function(){
+		document.getElementById('new-content-post1').focus();
+	});
+</script>
