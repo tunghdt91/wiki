@@ -1,4 +1,8 @@
 <% provide(:title, 'Create New Account') %>
+<script type="text/javascript">
+  $('[data-behaviour~=datepicker]').datepicker();
+</script>
+
 <div id="account-left">
 <span style="font-size: 18px; font-weight: bold;">Mở tài khoản :</span>
 <br/>
@@ -15,13 +19,15 @@
 		      <%= f.text_field :email %><br/><br/>
     		  
       	Ngày Sinh<br/>
+
       		<%= f.text_field :birth_day,:'data-behaviour' =>'datepicker', :'data-date-format'=> "yyyy-mm-dd" %><br/><br/><br/>
       	<%= f.submit "Tạo tài khoản", class: "btn medium success pretty" %><br/>	
   <%end%>
  </div>
-<script type="text/javascript">
+ <script type="text/javascript">
   $('[data-behaviour~=datepicker]').datepicker();
 </script>
+
 <div id="account-info">
 		<h3><span style ="color: red">Nội dung & Quy định </span></h3>
 		<br/>

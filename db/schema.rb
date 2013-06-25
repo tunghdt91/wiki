@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(:version => 20130624082847) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "viewed"
-    t.integer  "comment"
+    t.integer  "viewed",     :default => 1
+    t.integer  "comment",    :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "posts", :force => true do |t|
@@ -72,17 +72,17 @@ ActiveRecord::Schema.define(:version => 20130624082847) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "birth_day"
-    t.string   "date_join"
+    t.datetime "birth_day"
+    t.datetime "date_join"
     t.string   "address"
     t.string   "sothich"
     t.string   "caunoiuathich"
     t.integer  "group"
     t.string   "level"
-    t.string   "avatar_path",     :default => "/img/avatar.png"
+    t.string   "avatar_path",     :default => "/img/avatar/avatar.png"
     t.string   "remember_token"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.string   "password_digest"
   end
 

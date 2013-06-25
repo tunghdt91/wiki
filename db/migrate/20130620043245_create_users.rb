@@ -3,8 +3,8 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :birth_day
-      t.string :date_join
+      t.datetime :birth_day
+      t.datetime :date_join
       t.string :address
       t.string :sothich
       t.string :caunoiuathich

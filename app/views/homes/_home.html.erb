@@ -1,0 +1,28 @@
+   <%h=home%>
+    <table width="100%" class="tbl_post" >
+            <tr height="90" bgcolor="#F1F1EC">
+                <td width="100%" align="left" valign="middle"><a href="<%= home_path(h.id)%>"><span style="font-size: 27px; color: black; font-weight: bold;"><%=h.title%></span></a></td>
+            </tr>
+
+            <tr >
+                <td width="100%" align="left">
+                    bởi <a href="<%= user_path(h.user_id)%>"><font face="verdana" size="4" color="#1769B4" style="font-weight: bold;"><%=User.find(h.user_id).name%></font>
+                    </a> vào <a><%=h.created_at.strftime("%d-%m")%></a> lúc <a><%=h.created_at.strftime("%H:%M")%></a>.
+                <hr color="#F1F1EC"/>
+                </td>
+            </tr>
+            
+            <tr >
+                <td>
+                    <div class="content-html"><%=h.content.html_safe%></div>
+                    <hr color="#F1F1EC"/>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <span style="color:#808080">Số lần đọc: <%=h.viewed%></span>&nbsp;&nbsp;&nbsp;
+                    <span style= "color:#808080">Comment: <%=h.comment%></span>
+                </td>
+            </tr>
+        </table>
+    </div>

@@ -4,6 +4,7 @@ Wiki::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   resources :events
   resources :links
+  resources :homecomments
   resources :homes do
     post 'comment', on: :collection
   end

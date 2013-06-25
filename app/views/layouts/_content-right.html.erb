@@ -36,7 +36,7 @@
 	<div id="info-member">
 		Tên: <span style="color: red; font-weight: bold;"><a href="<%= user_path(user.id)%>"><%= user.name%></a></span><br/>
 		Quê Quán: <span style="color: red; "><%= user.address%></span><br/>
-		Sinh nhật: <span style="color: blue; "><%= user.birth_day%></span><br/>
+		Sinh nhật: <span style="color: blue; "><%= user.birth_day.strftime("%d/%m/%Y")%></span><br/>
 		Ngày gia nhập: <br/>
 		
 	</div>
