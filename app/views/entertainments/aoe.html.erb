@@ -11,7 +11,7 @@ $(document).ready(function(){
 <img src="/img/banner_aoe.jpg" width="700" height="150"/>
 <div class="clear"></div>
 <br/>
-<a href="<%=root_path%>">Trang chủ</a> &nbsp;>>&nbsp;<a href="<%=entertainments_path%>">Giải trí</a>
+<a href="<%=root_path%>">Home>>&nbsp;&nbsp;</a> <a href="<%=entertainments_path%>">Entertainments</a>
 <br/>
 <input type="button" value="Bài mới" class="btn pretty warning medium" id="aoe_button"/>
 <br/>
@@ -19,21 +19,21 @@ $(document).ready(function(){
 <br/>
 <br/>
 <br/>
-<h2 style="color:red">[AOE]Tạo chủ đề mới.</h2>
+<h2 style="color:red">[AOE] Create new Topic</h2>
 	<%= form_for @aoe_new_post,:html => { :multipart => true }, url: entertainments_path ,method: :post do |f|%>
 		<table>
 			<tr>
-				<td>Tiêu đề</td> 
+				<td>Title</td> 
 				<td><%=f.text_field :title%></td>
 			</tr>
 			<tr>
-				<td>Nội dung</td>
+				<td>Content</td>
 				<td><%=f.text_area :content,rows: '10', cols: '70'%></td>
 			</tr>
 		</table>
 	<input type="hidden" name="id" value="aoe"/>
 	<div class="clear"></div>
-	<%= f.submit "Gửi chủ đề", class: "btn medium success pretty",id: "send_aoe_post" %>	
+	<%= f.submit "Send Topic", class: "btn medium success pretty",id: "send_aoe_post" %>	
 	<%end%>
 </div>
 <!-- end form new post -->
@@ -51,7 +51,7 @@ $(document).ready(function(){
 			<td><img  src="/img/thread.gif" id="thread"/></td>
 			<td >Topic: <span style="font-weight: bold; "><a href="<%= entertainment_path(a.id)%>"><%= a.title%></a></span>
 			<br/>
-			<font size="2"> Đã gửi bởi</font> <font size="2" color="red"><%=a.user_post%></font> <font size="2">vào lúc <%=a.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
+			<font size="2"> sent by</font> <font size="2" color="red"><%=a.user_post%></font> <font size="2">at <%=a.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
 			</td>
 
 			<td align="center"><%= Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{a.id}").count%></td>
@@ -59,7 +59,7 @@ $(document).ready(function(){
 			<% last_post_info = Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{a.id} order by created_at desc limit 1")%>
 			<td bgcolor="#E1E4F2" align='center'>
 					<% if last_post_info!=[] %>
-						<font size='1'>bài cuối bởi</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
+						<font size='1'>last article</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
 							<br/>
 						<font size="1"><%= last_post_info[0].created_at.strftime("%R:%M:%S %d-%m")%></font>
 					<%end%>

@@ -38,16 +38,16 @@
 						<ul>
 
 							<% if !signed_in?%>
-									<li><a id='login' href="#">Đăng nhập</a></li>
+									<li><a id='login' href="#">Login</a></li>
 								<%else%>
-									<li><%= link_to 'Thoát',signout_path, method: "delete" %></li>
+									<li><%= link_to 'Signout',signout_path, method: "delete" %></li>
 								<%end%>
 								<li>&nbsp;&nbsp;&nbsp;</li>
 							<img src="/img/people.gif" icon height="40" wight="40"/>
 							<% if !signed_in?%>
-									<li><%= link_to 'Mở tài khoản',new_user_path%></li>
+									<li><%= link_to 'Create account',new_user_path%></li>
 							<%else%>
-								<li>xin chào (<span style="font-weight:bold; color: red;"><%= current_user.name %></span>)</li>
+								<li>hello (<span style="font-weight:bold; color: red;"><%= current_user.name %></span>)</li>
 							<% end %>
 						</ul>
 					</div>
@@ -84,15 +84,15 @@
 						<ul>
 							<li>
 									<img src="/img/home.jpeg" width="20" height="20">
-									<li><%= link_to 'Trang chủ',root_path%></li>
+									<li><%= link_to 'Home',root_path%></li>
 							</li>
 							<li>
 									<img src="/img/alert.jpeg" width="20" height="20">
-									<li><%= link_to 'Thông báo','#'%></li>
+									<li><%= link_to 'fMailer','#'%></li>
 							</li>
 							<li>
 									<img src="/img/new-post.gif" width="20" height="20">
-									<li><%= link_to 'Bài mới','#'%></li>
+									<li><%= link_to 'NewPost','#'%></li>
 							</li>
 						</ul>
 					</div>
@@ -100,11 +100,11 @@
 						<ul>
 							<li>
 									<img src="/img/member.png" width="20" height="20">
-									<li><%= link_to 'Thành viên',users_path%></li>
+									<li><%= link_to 'Members',users_path%></li>
 							</li>
 							<li>
 									<img src="/img/event.jpeg" width="20" height="20">
-									<li><%= link_to 'Sự kiện',events_path%></li>
+									<li><%= link_to 'Events',events_path%></li>
 							</li>				
 							
 							<li>
@@ -114,11 +114,11 @@
 
 							<li>
 									<img src="/img/entertainment.jpeg" width="20" height="20">
-									<li><%= link_to 'Giải trí',entertainments_path%></li>
+									<li><%= link_to 'Entertainment',entertainments_path%></li>
 							</li>	
 							<li>
 									<img src="/img/raovat.jpeg" width="20" height="20">
-									<li><%= link_to 'Rao vặt','#'%></li>
+									<li><%= link_to 'Market','#'%></li>
 							</li>
 							
 							
@@ -126,7 +126,7 @@
 							<% if signed_in?%>
 							<li>
 									<img src="/img/profile.jpeg" width="20" height="20">
-									<li><%= link_to 'Cá nhân',user_path(current_user)%></li>
+									<li><%= link_to 'Profile',user_path(current_user)%></li>
 							</li>
 							
 							<%end%>

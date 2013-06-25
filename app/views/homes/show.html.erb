@@ -28,9 +28,9 @@
 
             <tr >
                 <td width="100%" align="left">
-                    <span style="color:#808080">&nbsp;&nbsp; sửa lần cuối vào lúc <%=@home.updated_at.strftime("%H:%M ngày %d/%m/%Y")%>&nbsp;&nbsp;&nbsp;bởi...</span><br/> 
-                    Tạo bởi <a href="<%= user_path(@home.user_id)%>"><font face="verdana" size="4" color="#1769B4"><%=User.find(@home.user_id).name%></font>
-                    </a> vào <a><%=@home.created_at.strftime("%d-%m")%></a> lúc <a><%=@home.created_at.strftime("%H:%M")%></a>.
+                    <span style="color:#808080">&nbsp;&nbsp; last edited at <%=@home.updated_at.strftime("%H:%M date %d/%m/%Y")%>&nbsp;&nbsp;&nbsp;by...</span><br/> 
+                    create by <a href="<%= user_path(@home.user_id)%>"><font face="verdana" size="4" color="#1769B4"><%=User.find(@home.user_id).name%></font>
+                    </a> at <a><%=@home.created_at.strftime("%d-%m")%></a> date <a><%=@home.created_at.strftime("%H:%M")%></a>.
                 <hr color="#F1F1EC"/>
                 </td>
             </tr>
@@ -43,8 +43,8 @@
             </tr>
             <tr >
                 <td>
-                    <span style="color:#808080">Số lần đọc: <%=@home.viewed%></span>&nbsp;&nbsp;&nbsp;
-                    <span style= "color:#808080">Comment: <%=@home.comment%></span>
+                    <span style="color:#808080">Viewed: <%=@home.viewed%></span>&nbsp;&nbsp;&nbsp;
+                    <span style= "color:#808080">Commented: <%=@home.comment%></span>
                 </td>
             </tr>
         </table>
@@ -64,18 +64,18 @@
 <%end%>
 
 <%if !signed_in?%>
-    <p style="color:#808080;" >Bạn chưa đăng nhập. Hãy <a href="<%=new_session_path%>">đăng nhập</a> để có thể thảo luận</p>
+    <p style="color:#808080;" >You not login. Let <a href="<%=new_session_path%>">SignIn</a> to be discussed</p>
 <%else%>
     <br/>
     <br/>
     <br/>
     <br/>
     <br/>
-    <span style="font-weight: bold; color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trả lời nhanh:</span>(<b>HTML <font color="blue">on</font></b>)
+    <span style="font-weight: bold; color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quick report</span>(<b>HTML <font color="blue">on</font></b>)
     <%= form_for :homes, url: comment_homes_path, method: :post do|f| %>
         <center><textarea id = "new-content-post1" rows="10" cols="70" name="content" class=""></textarea></center>
          <input type="hidden" name ="id" value = "<%=@home.id %>" />
         <div class="clear"></div>
-         <%= f.submit "Gửi trả lời" ,class: " btn medium pretty success"%>
+         <%= f.submit "Send Article" ,class: " btn medium pretty success"%>
     <%end%>
 <%end%>

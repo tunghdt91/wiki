@@ -1,7 +1,6 @@
 <%= form_for(@home) do |f| %>
   <% if @home.errors.any? %>
     <script>
-    alert("Bài viết chưa được gửi đi");
     </script>
     <div id="error_explanation">
       <ul>
@@ -14,13 +13,13 @@
     <br/>
   <% end %>
 
-    <p style="font-size: 15px; font-weight: bold;">Tiêu đề(<span style="color: red;">*</span>)</p>
+    <p style="font-size: 15px; font-weight: bold;">Title(<span style="color: red;">*</span>)</p>
     <%= f.text_field :title %>
-    <p style="font-size: 15px; font-weight: bold;">Nội dung(<span style="color: red;">*</span>)</p>
+    <p style="font-size: 15px; font-weight: bold;">Content(<span style="color: red;">*</span>)</p>
     <%= f.text_area :content %>
 
     <br/>
   <div class="actions">
-    <%= f.submit "Gửi bài này", class: "btn medium success pretty"%>
+    <%= f.submit "Send Article", class: "btn medium success pretty"%>
   </div>
 <% end %>

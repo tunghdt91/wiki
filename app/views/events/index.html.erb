@@ -31,35 +31,35 @@ $(document).ready(function(){
 
 <table width="100%" cellpadding="10">
 	<tr >
-		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="new-event"><%= link_to 'Thêm sự kiện mới','#' %></div></td>
-		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="week-event"><%= link_to 'Sự kiện tuần này ','#'%></div></td>
-		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="month-event"><%= link_to 'Sự kiện tháng này','#'%></div></td>
-		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="all-event"><%= link_to 'Xem tất cả','#'%></div></td>
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="new-event"><%= link_to 'create Event','#' %></div></td>
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="week-event"><%= link_to 'week Event ','#'%></div></td>
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="month-event"><%= link_to 'month Event','#'%></div></td>
+		<td width="25%"><img src="/img/event.jpeg" width="50" height="50" class="event"/><div id="all-event"><%= link_to 'view All','#'%></div></td>
 	</tr>
 </table>
 			<div id="content1">
 				<%= form_for @event_new ,url: events_path, method: :post do |f| %>
 					<table width="100%">
 						<tr>
-							<td>Tên sự kiện</td>
+							<td>Name event</td>
 							<td><%= f.text_field :name %></td>
 						</tr>
 
 						<tr>
-							<td>Địa Điểm</td>
+							<td>Address event</td>
 							<td><%= f.text_field :address %></td>
 						</tr>
 						<tr>
-							<td>Thời gian bắt đầu</td>
+							<td>[O]Time start</td>
 							<td><%= f.text_field :time_start %></td>
 						</tr>
 
 						<tr>
-							<td>Thời gian  kết thúc</td>
+							<td>[P]Time close</td>
 							<td><%= f.text_field :time_end %></td>
 						</tr>
 					</table>
-					<%= f.submit "Lưu lại", class: "btn medium success pretty" %><br/>	
+					<%= f.submit "Save Event", class: "btn medium success pretty" %><br/>	
 				<%end%>
 			</div>
 
@@ -73,7 +73,7 @@ $(document).ready(function(){
 			</div>
 			
 			<div id="content4">
-				<h2>Tất cả các sự kiện </h2><br/>
+				<h2>all Events </h2><br/>
 				<table width="100%">
 					<tr align="center" bgcolor="##15A88" height="30" cellpadding="1" >
 						<th width="5%"></th>

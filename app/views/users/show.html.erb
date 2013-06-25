@@ -17,19 +17,19 @@
     </div>
   <% end %>
 
-<h2>Thông tin thành viên</h2>
+<h2>Infomation member</h2>
 <table width='60%'>
 	<tr>
-		<td>Tên</td>
+		<td>Name</td>
 		<td><%= @user.name%></td>
 	</tr>
 	<tr>
-		<td>Ngày sinh</td>
+		<td>Birth day</td>
 		<td><%= @user.birth_day%></td>
 	</tr>
 		
 	<tr>
-		<td>Quê quán</td>
+		<td>Address</td>
 		<td><%= @user.address%></td>
 	</tr>
 
@@ -40,21 +40,21 @@
 
 	<tr>
 	<tr>
-		<td>Số bài viết</td>
-		<td><%= Post.where('user_id=?',current_user.id).count%></td>
+		<td>Article</td>
+		<td></td>
 	</tr>
 	<tr>
-		<td>Sở thích</td>
+		<td>Favorite</td>
 		<td><%= @user.sothich%></td>
 	</tr>
 
 	<tr>
-		<td>Câu nói ưu thích</td>
+		<td>Say favorite</td>
 		<td><%= @user.caunoiuathich%></td>
 	</tr>
 	
 	<tr height="60">
-		<td widht="10%">Hình đại diện (<a id="avatar" href="#"> Sửa</a>)</td>
+		<td widht="10%">Avatar (<a id="avatar" href="#"> edit</a>)</td>
 		<td widht="90%" align="left"><img src="<%=@user.avatar_path %>"  widht="60" height="60" class="img_avatar_user"/></td>
 	</tr>
 </table>
@@ -65,8 +65,8 @@
     <%= file_field 'upload', 'datafile' %>
   <div class="clr"></div>
   <div class="actions">
-    <%=f.submit "Change Avatar", class: "medium warning btn pretty" %>
+    <%=f.submit "Change avatar", class: "medium warning btn pretty" %>
   </div>
 <% end %>
 </div>
-<%= link_to 'Cập nhật thông tin',edit_user_path(current_user.id)%>
+<%= link_to 'Update my profile',edit_user_path(current_user.id)%>

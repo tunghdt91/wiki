@@ -31,7 +31,7 @@
 <div class="clear"></div>
 <br/>
 <br/>
-<h2>Thể thao-Du lịch</h2>
+<h2>Sport-travel</h2>
 
 <a href='#'><img border="0" src="/img/bongda.jpeg" alt="aoe" onmouseover="bigImg(this)" onmouseout="normalImg(this)" title="Bong Da" width="100" height="100"/>
 </a>
@@ -40,7 +40,7 @@
 <div class="clear"></div>
 <hr/>
 
-<h1 style="color: red;">Các bài viết liên quan :</h1>
+<h1 style="color: red;">Topic release</h1>
 <table width="100%">
 	<tr align="center" bgcolor="##15A88" height="30" cellpadding="1" >
 		<th width="5%"></th>
@@ -56,7 +56,7 @@
 			<td >Topic: <span style="font-weight: bold; "><a href="<%= entertainment_path(e.id)%>"><%= e.title%></a>
 				</span>
 				<br/>
-				<font size="2"> Đã gửi bởi</font> <font size="2" color="red"><%=e.user_post%></font> <font size="2">vào lúc <%=e.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
+				<font size="2"> sent by </font> <font size="2" color="red"><%=e.user_post%></font> <font size="2">at <%=e.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
 			</td>
 
 			<td align="center"><a href="/entertainments/<%= e.catalog%>"><%=e.catalog%></a></td>
@@ -65,7 +65,7 @@
 			<% last_post_info = Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{e.id} order by created_at desc limit 1")%>
 			<td bgcolor="#E1E4F2" align='center'>
 					<% if last_post_info!=[] %>
-						<font size='1'>bài cuối bởi</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
+						<font size='1'>last article</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
 							<br/>
 						<font size="1"><%= last_post_info[0].created_at.strftime("%R:%M:%S %d-%m")%></font>
 					<%end%>

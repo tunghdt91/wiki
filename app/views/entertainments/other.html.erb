@@ -15,20 +15,20 @@ $(document).ready(function(){
 <input type="button" value="Bài mới" class="btn pretty warning medium" id="other_button"/>
 <div id='new_other_post'>
 	<br/>
-	<h2 style="color:red">[Game #]Tạo chủ đề mới.</h2>
+	<h2 style="color:red">[Game #] Create new Topic.</h2>
 		<%= form_for @other_new_post, url: entertainments_path ,method: :post do |f|%>
 			<table>
 				<tr>
-					<td>Tiêu đề</td> 
+					<td>Title</td> 
 					<td><%=f.text_field :title%></td>
 				</tr>
 				<tr>
-					<td>Nội dung</td>
+					<td>Content</td>
 					<td><%=f.text_area :content%></td>
 				</tr>
 			</table>
 		<input type="hidden" name="id" value="other"/>
-		<%= f.submit "Gửi chủ đề", class: "btn medium success pretty",id: "send_other_post" %>	
+		<%= f.submit "Send Topic", class: "btn medium success pretty",id: "send_other_post" %>	
 	<%end%>
 </div>
 
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			<td><img  src="/img/thread.gif" id="thread"/></td>
 			<td >Topic: <span style="font-weight: bold; "><a href="<%= entertainment_path(o.id)%>"><%= o.title%></a></span>
 			<br/>
-			<font size="2"> Đã gửi bởi</font> <font size="2" color="red"><%=o.user_post%></font> <font size="2">vào lúc <%=o.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
+			<font size="2"> sent by</font> <font size="2" color="red"><%=o.user_post%></font> <font size="2">at <%=o.created_at.strftime("%I:%M%p-%d/%m/%Y")%></font>
 			</td>
 
 			<td align="center"><%= Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{o.id}").count%></td>
@@ -55,7 +55,7 @@ $(document).ready(function(){
 			<% last_post_info = Entertainmentpost.find_by_sql("Select * from entertainmentposts where entertainment_id=#{o.id} order by created_at desc limit 1")%>
 			<td bgcolor="#E1E4F2" align='center'>
 					<% if last_post_info!=[] %>
-						<font size='1'>bài cuối bởi</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
+						<font size='1'>last article</font> <span style="color: red; font-weight: bold;"><%= User.find(last_post_info[0].user_id).name%></span>
 							<br/>
 						<font size="1"><%= last_post_info[0].created_at.strftime("%R:%M:%S %d-%m")%></font>
 					<%end%>

@@ -10,38 +10,38 @@
 <div class="fb-like" data-href="http://developers.facebook.com/docs/reference/plugins/like" data-send="true" data-width="360" data-show-faces="true" data-font="arial"></div>
 
 <div class="clear"></div>
-<div id="title-statistic">Thông tin</div>
+<div id="title-statistic">Statistics</div>
 <div id="statistic">
-	Hôm nay là : <span style="font-weight: bold; color: red;"> <%= Time.now.strftime('%d')%> - <%= Time.now.strftime('%m')%> - <%= Time.now.strftime('%Y')%></span><br/>
-	Tổng số thành viên: <span style="font-weight: bold; color: blue;"> <%= User.all.count%></span><br/>
-	Chủ đề :<span style="font-weight: bold; color: blue;"> <%= Entertainment.all.count%></span><br/>
-	<%total_post= Post.all.count + Entertainmentpost.all.count%>
-	Tổng số bài viết: <span style="font-weight: bold; color: blue;"> <%= total_post%></span><br/>
-	Thành Viên mới nhất:<a href="<%=user_path(User.first.id)%>"><span style="font-weight: bold; color: red;"><%=User.first.name%></span></a><br/>
+	Today: <span style="font-weight: bold; color: red;"> <%= Time.now.strftime('%d')%> - <%= Time.now.strftime('%m')%> - <%= Time.now.strftime('%Y')%></span><br/>
+	Members: <span style="font-weight: bold; color: blue;"> <%= User.all.count%></span><br/>
+	Topics :<span style="font-weight: bold; color: blue;"> <%= Entertainment.all.count%></span><br/>
+	<%total_post=Entertainmentpost.all.count%>
+	Articles: <span style="font-weight: bold; color: blue;"> <%= total_post%></span><br/>
+	New Member:<a href="<%=user_path(User.first.id)%>"><span style="font-weight: bold; color: red;"><%=User.first.name%></span></a><br/>
 </div>
 
-<div id="title-event">Sự kiện</div>
+<div id="title-event">Events</div>
 <div id="event">
-	Sinh nhật :<br/>
-	Ngày này năm xưa:<br/>
-	Sự  kiện tuần này :<br/>
+	Birthday :<br/>
+	In the old days:<br/>
+	Week event :<br/>
 </div>
 
-<div id="title-img">Thành viên ngẫu nhiên</div>
+<div id="title-img">Random User</div>
 <%user = User.find(rand(1..(User.all.count)) )%>
 <div id="img-member">
 	<div id="avatar-member">
 		<img src="<%=user.avatar_path%>" alt="framgia" width="100" height="100"/>
 	</div>
 	<div id="info-member">
-		Tên: <span style="color: red; font-weight: bold;"><a href="<%= user_path(user.id)%>"><%= user.name%></a></span><br/>
-		Quê Quán: <span style="color: red; "><%= user.address%></span><br/>
-		Sinh nhật: <span style="color: blue; "><%= user.birth_day.strftime("%d/%m/%Y")%></span><br/>
-		Ngày gia nhập: <br/>
+		Name: <span style="color: red; font-weight: bold;"><a href="<%= user_path(user.id)%>"><%= user.name%></a></span><br/>
+		Address: <span style="color: red; "><%= user.address%></span><br/>
+		BirthDay: <span style="color: blue; "><%= user.birth_day.strftime("%d/%m/%Y")%></span><br/>
+		Join Day: <br/>
 		
 	</div>
 	<div class="clear"></div>
-	Sở thích: <span style="color: red; "><%= user.sothich%></span><br/>
-	Câu nói ưu thích: <span style="color: red; "><%= user.caunoiuathich%></span><br/>
+	Favorite: <span style="color: red; "><%= user.sothich%></span><br/>
+	Favorite sayings: <span style="color: red; "><%= user.caunoiuathich%></span><br/>
 </div>
 

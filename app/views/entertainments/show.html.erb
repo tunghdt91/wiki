@@ -7,7 +7,7 @@
 		});
 	});
 </script>
-<a href="<%=root_path%>">Trang chủ</a> &nbsp;>>&nbsp;<a href="<%=entertainments_path%>">Giải trí</a>&nbsp;>>&nbsp;<a href="/entertainments/<%= @entertainment.catalog%>"><%=@entertainment.catalog%></a>
+<a href="<%=root_path%>">Home>> &nbsp;&nbsp;</a><a href="<%=entertainments_path%>">Entertainment</a>&nbsp;>>&nbsp;<a href="/entertainments/<%= @entertainment.catalog%>"><%=@entertainment.catalog%></a>
 <br/>
 <br/>
 <%count=0%>
@@ -17,7 +17,7 @@
 			<table widht="100%">
 				<tr>
 					<td widht="30%"><img src="/img/post-icon.gif" id="thread"/></td>
-					<td><font color="white" size="2">Gửi vào lúc: <%= @entertainment.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
+					<td><font color="white" size="2">sent at: <%= @entertainment.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
 				</tr>
 			</table>
 		</td>
@@ -35,11 +35,11 @@
 			</table>
 		</td>
 		<td width="20%">
-			<font color="black" size="2">Ngày sinh: <%= User.where('name=?',@entertainment.user_post)[0].birth_day%></font>
+			<font color="black" size="2">Birthday: <%= User.where('name=?',@entertainment.user_post)[0].birth_day%></font>
 			<br/>
-			<font color="black" size="2">Địa chỉ: <%= User.where('name=?',@entertainment.user_post)[0].address%></font>
+			<font color="black" size="2">Address: <%= User.where('name=?',@entertainment.user_post)[0].address%></font>
 			<br/>
-			<font color="black" size="2">Bài viết: </font>
+			<font color="black" size="2">Article: </font>
 		
 		</td>
 	</tr>
@@ -76,7 +76,7 @@
 									<table width="100%">
 										<tr>
 											<td width="5%" aligin="left"><img src="/img/post-icon.gif" id="thread"/></td>
-											<td width="95%"><font color="white" size="2">Gửi vào lúc:<%= c.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
+											<td width="95%"><font color="white" size="2">sent at:<%= c.created_at.strftime('%I:%M%p-%d/%m/%Y')%></font></td>
 										</tr>
 									</table>
 								</td>
@@ -94,12 +94,12 @@
 							</td>
 
 							<td width="20%">
-								<font color="black" size="2">Ngày sinh: <%= User.find(c.user_id).birth_day%>
+								<font color="black" size="2">Birthday: <%= User.find(c.user_id).birth_day%>
 								</font>
 								<br/>
-								<font color="black" size="2">Địa chỉ: <%= User.find(c.user_id).address%></font>
+								<font color="black" size="2">Address: <%= User.find(c.user_id).address%></font>
 								<br/>
-								<font color="black" size="2">Bài viết: </font>
+								<font color="black" size="2">Article: </font>
 
 							</td>
 						</tr>

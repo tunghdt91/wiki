@@ -9,16 +9,16 @@
 <br/>
 <br/>
  <%= form_for(@user) do |f| %>
-      	Tên người dùng :<br/>
+      	User name :<br/>
       			<%= f.text_field :name %><br/><br/>
-     		Mật Khẩu:<br/>
+     		Password:<br/>
       			<%= f.password_field :password %><br/><br/>
-      	Xác nhận lại mật khẩu :<br/>
+      	Confirm password :<br/>
       			<%= f.password_field :password_confirmation %> <br/><br/>
-      	Email:<br/>		
+      	Email address:<br/>		
 		      <%= f.text_field :email %><br/><br/>
     		  
-      	Ngày Sinh<br/>
+      	Birthday<br/>
 
       		<%= f.text_field :birth_day,:'data-behaviour' =>'datepicker', :'data-date-format'=> "yyyy-mm-dd" %><br/><br/><br/>
       	<%= f.submit "Tạo tài khoản", class: "btn medium success pretty" %><br/>	

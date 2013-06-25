@@ -24,8 +24,8 @@ ul#inlineBlock li a{
 }
 </style>
 <ul id="inlineBlock">
-    <li><a href="<%= new_home_path%>">Viết bài vào trang này</a></li>
-    <li><a href="#">Liên hệ</a></li>        
+    <li><a href="<%= new_home_path%>">new Article</a></li>
+    <li><a href="#">Contact</a></li>        
 </ul>
 <div class="clear"></div>
 <br/>
@@ -39,14 +39,14 @@ ul#inlineBlock li a{
 
             <tr >
                 <td width="100%" align="left">
-                    bởi <a href="<%= user_path(h.user_id)%>"><font face="verdana" size="4" color="#1769B4" style="font-weight: bold;"><%=User.find(h.user_id).name%></font>
-                    </a> vào <a><%=h.created_at.strftime("%d-%m")%></a> lúc <a><%=h.created_at.strftime("%H:%M")%></a>.
+                    by <a href="<%= user_path(h.user_id)%>"><font face="verdana" size="4" color="#1769B4" style="font-weight: bold;"><%=User.find(h.user_id).name%></font>
+                    </a> at <a><%=h.created_at.strftime("%d-%m")%></a> &nbsp; <a><%=h.created_at.strftime("%H:%M")%></a>.
                     <%if signed_in? && current_user.id==1%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(
-                         <font size="2" ><%= link_to "xóa bài viết", h, method: :delete,
-                                     data: { confirm: "xóa bài viết này?" }%>
+                         <font size="2" ><%= link_to "del", h, method: :delete,
+                                     data: { confirm: "Are you sure Delete it?" }%>
                          </font>)
                         &nbsp;&nbsp;&nbsp;&nbsp;(
-                         <font size="2" ><%= link_to "sửa", edit_home_path(h.id) %>
+                         <font size="2" ><%= link_to "edit", edit_home_path(h.id) %>
                          </font>)
                     <%end%>
                 <hr color="#F1F1EC"/>
@@ -55,13 +55,13 @@ ul#inlineBlock li a{
             
             <tr >
                 <td>
-                    <div class="content-html"><%=h.content.first(600).html_safe%></div>
+                    <div class="content-html"><%=h.content.first(800).html_safe%>...</div>
                     <hr color="#F1F1EC"/>
                 </td>
             </tr>
             <tr >
                 <td>
-                    <span style="color:#808080">Số lần đọc: <%=h.viewed%></span>&nbsp;&nbsp;&nbsp;
+                    <span style="color:#808080">Viewed: <%=h.viewed%></span>&nbsp;&nbsp;&nbsp;
                     <span style= "color:#808080">Comment: <%=h.comment%></span>
                 </td>
             </tr>
