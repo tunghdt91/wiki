@@ -1,0 +1,69 @@
+<style>
+#wrapper-myfile{
+	width:700px;
+	height: auto;
+}
+
+#header-myfile {
+	width: 700px;
+	height: 50px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #43A4EE;
+}
+
+#header-myfile img{
+	float: left;
+	margin-left: -10px;
+}
+
+</style>
+
+<div id="wrapper-myfile">
+	<b>Hello: <span style="color: red;"><%= current_user.name%></span>.</b>
+	<br/>
+	<br/>
+	<br/>
+	<div id='up-file'>
+		<%= form_for @myfile, :html => { :multipart => true } do |f| %>
+  		<label for="up"></label>
+  			<table width="100%">
+  				<tr>
+  					<td width="60%">Choose your file</td>
+  					<td> Name Display(<span style="font-size: 2; color: #808080">can blank</span>)</td>
+  				</tr>
+  			</table>
+  	 	 	<%= file_field 'upload', 'datafile' %> <%=f.text_field :name_display%>
+  		<div class="clr"></div>
+  		<%=f.submit "Up Now", class: "medium success btn pretty" %>
+  	<% end %>
+	</div>
+
+	<div id="header-myfile">
+		<img src="/img/myfile.jpeg" width="70" height="70">
+	</div>
+	<div class="clear"></div>
+<span style="font-size: 14px; font-weight: bold; color: red;">My File(<%= @myfiles.count%>)</span>
+	<div id="content-myfile">
+		<table width="100%">
+			<tr height="10px" align='left'>
+				<th width="5%">Index</th>
+				<th width="20%">File name</td>
+				<th width="30%">Link paste to web</th>
+				<th width="35%">Full link</th>
+				<th width="10%">Date</th>
+			</tr>
+			<%id=0%>
+			<% @myfiles.each do |file| %>
+				<% id = id + 1%>
+				<tr height="40">
+						<td><%= id %></td>
+						<td><a href="/myfiles/<%=file.name%>"><%= file.name_display %></a></td>
+						<td><font size="2" color="#808080">/myfiles/<%= file.name%></font></td>
+						<td><font size="2" color="#808080">localhost:3000/myfiles/<%= file.name%></font></td>
+						<td><%= file.created_at.strftime("%d/%m%Y")%></td>
+				</tr>
+			<%end%>
+		</table>
+	</div>
+
+</div>

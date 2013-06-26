@@ -400,6 +400,53 @@ margin: 1px auto;
 	display: inline-block;
 }
 
+#chat{
+ height: 400px;
+ overflow: auto;
+ background-image: url('/img/cloud.jpg');
+ background-repeat: no-repeat;
+ background-color: transparent;
+}
+
+/*email css*/
+#mail-wrapper {
+	width: 720px;
+}
+#mail-slide-bar {
+	float: left;
+	width: 120px;
+
+}
+
+#mail-content{
+	margin-top: 50px;
+	float: right;
+	width: 570px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*html csss*/
 input {
   height: 30px;

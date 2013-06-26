@@ -1,0 +1,121 @@
+<style>
+#mailtop-slide-bar img {
+  margin-right: 20px;
+}
+#mail-menu-bar ul li{
+/*  margin-left: 10px;*/
+  font-size: 13px;
+  display: block;
+  font-weight: bold;
+  line-height: 3em;
+}
+
+#mail-menu-bar ul li a{
+  color : #770000;
+  margin-left: 20px;
+}
+
+</style>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    $('#new_email').change(function() {
+      document.getElementById("email_to_user").value=document.getElementById("email_id").value
+   // document.getElementById("sugesst").innerHTML= document.getElementById("report_catalog_id").value;
+  });
+});
+
+</script>
+
+<!-- css stlye end -->
+
+<div id="mail-wrapper">
+  <div id="mail-slide-bar">
+    <div id="mailtop-slide-bar">
+      <img src="/img/webmail.jpeg" width="100" height="100">
+      <div class="clear"></div>
+      <p style="font-weight: bold; font-size: 14px; " id="main">List Mailer</p>
+    </div>
+
+    <div id="mail-menu-bar">
+      <ul>
+        <li>
+          <table>
+            <tr>
+              <td><img src="/img/email/inbox.gif" /></td>
+              <td><%= link_to 'New',new_email_path%></td>
+            </tr>
+          </table>
+        </li>
+        
+        <li>
+          <table>
+            <tr>
+              <td><img src="/img/email/other.gif" /></td>
+              <td><%= link_to 'Unread',unread_emails_path%></td>
+            </tr>
+          </table>
+        </li>
+
+        <li>
+          <table>
+            <tr>
+              <td><img src="/img/email/inbox.gif" /></td>
+              <td><%= link_to 'Inbox',inbox_emails_path%></td>
+            </tr>
+          </table>
+        </li>
+
+        <li>
+          <table>
+            <tr>
+              <td><img src="/img/email/sent.gif" /></td>
+              <td><%= link_to 'Sent',sent_emails_path%></td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="mail-content">
+        <span style="font-size: 20px">New Email</span>
+<%= form_for(@email) do |f| %>
+  <% if @email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@email.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @email.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+   
+   <table width ="100%">
+    <tr>
+      <td width="80%"> <b>Type in Email:</b>(<span style=" color: blue;">*</span>):</br></td>
+      <td width ="20%"><b>or Select :</b>(<span style=" color: blue;">*</span>):</br></td>
+    </tr>
+    <tr>
+      <td ><%= f.text_field :to_user ,placeholder: 'example@framgia.com'%></td>
+      <td ><%= f.collection_select :id,
+      User.all, :email, :email%></td>
+    </tr>
+   </table>
+  <div class="field">
+    <b>Subject</b>(<span style=" color: red;">*</span>):</br>
+      <%= f.text_field :title %>
+  </div>
+  <div class="field">
+     <b>Content</b>(<span style=" color: red;">*</span>):</br>
+      <%= f.text_area :content%>
+    </div>
+  <div class="actions">
+    <%= f.submit "Send Now",class: "medium warning btn pretty"%>
+  </div>
+<% end %>
+</div>
+
+  </div>

@@ -7,6 +7,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "private_pub" %>
   <script>
   	$(document).ready(function(){
 		$('#login').click(function(){
@@ -88,7 +89,7 @@
 							</li>
 							<li>
 									<img src="/img/alert.jpeg" width="20" height="20">
-									<li><%= link_to 'fMailer','#'%></li>
+									<li><%= link_to 'fMailer',inbox_emails_path%></li>
 							</li>
 							<li>
 									<img src="/img/new-post.gif" width="20" height="20">
@@ -109,7 +110,7 @@
 							
 							<li>
 									<img src="/img/link.jpeg" width="20" height="20">
-									<li><%= link_to 'Link',links_path%></li>
+									<li><%= link_to 'My File',myfiles_path%></li>
 							</li>
 
 							<li>

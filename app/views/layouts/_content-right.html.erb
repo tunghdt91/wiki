@@ -16,7 +16,7 @@
 	Members: <span style="font-weight: bold; color: blue;"> <%= User.all.count%></span><br/>
 	Topics :<span style="font-weight: bold; color: blue;"> <%= Entertainment.all.count%></span><br/>
 	<%total_post=Entertainmentpost.all.count%>
-	Articles: <span style="font-weight: bold; color: blue;"> <%= total_post%></span><br/>
+	Posted: <span style="font-weight: bold; color: blue;"> <%= total_post%></span><br/>
 	New Member:<a href="<%=user_path(User.first.id)%>"><span style="font-weight: bold; color: red;"><%=User.first.name%></span></a><br/>
 </div>
 
@@ -25,6 +25,10 @@
 	Birthday :<br/>
 	In the old days:<br/>
 	Week event :<br/>
+</div>
+
+<div id="chatbox">
+	<%= render "messages/all_messages", messages: Message.all %>
 </div>
 
 <div id="title-img">Random User</div>
@@ -44,4 +48,5 @@
 	Favorite: <span style="color: red; "><%= user.sothich%></span><br/>
 	Favorite sayings: <span style="color: red; "><%= user.caunoiuathich%></span><br/>
 </div>
+
 

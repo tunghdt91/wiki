@@ -5,10 +5,19 @@ Wiki::Application.routes.draw do
   resources :events
   resources :links
   resources :homecomments
+  resources :myfiles
+  resources :messages
+  
   resources :homes do
     post 'comment', on: :collection
   end
-  
+
+  resources :emails do
+    get 'inbox', on: :collection
+    get 'unread', on: :collection
+    get 'sent', on: :collection
+  end
+
   resources :statics do
     get 'home', on: :collection
   end

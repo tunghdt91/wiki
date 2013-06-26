@@ -16,6 +16,8 @@ gem 'bootstrap-datetimepicker-rails'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
+gem "private_pub"
+gem "thin"
 gem 'globalize3'
 
 # Gems used only for assets and not required

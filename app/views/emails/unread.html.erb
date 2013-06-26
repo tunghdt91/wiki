@@ -1,0 +1,111 @@
+<style>
+#mailtop-slide-bar img {
+	margin-right: 20px;
+}
+#mail-menu-bar ul li{
+/*	margin-left: 10px;*/
+	font-size: 13px;
+	display: block;
+	font-weight: bold;
+	line-height: 3em;
+}
+
+#mail-menu-bar ul li a{
+	color : #770000;
+	margin-left: 20px;
+}
+
+</style>
+<!-- css stlye end -->
+
+<div id="mail-wrapper">
+	<div id="mail-slide-bar">
+		<div id="mailtop-slide-bar">
+			<img src="/img/webmail.jpeg" width="100" height="100">
+			<div class="clear"></div>
+			<p style="font-weight: bold; font-size: 14px; " id="main">List Mailer</p>
+		</div>
+
+		<div id="mail-menu-bar">
+			<ul>
+				<li>
+					<table>
+						<tr>
+							<td><img src="/img/email/inbox.gif" /></td>
+							<td><%= link_to 'New',new_email_path%></td>
+						</tr>
+					</table>
+				</li>
+				
+				<li>
+					<table>
+						<tr>
+							<td><img src="/img/email/other.gif" /></td>
+							<td><%= link_to 'Unread',unread_emails_path%></td>
+						</tr>
+					</table>
+				</li>
+
+				<li>
+					<table>
+						<tr>
+							<td><img src="/img/email/inbox.gif" /></td>
+							<td><%= link_to 'Inbox',inbox_emails_path%></td>
+						</tr>
+					</table>
+				</li>
+
+				<li>
+					<table>
+						<tr>
+							<td><img src="/img/email/sent.gif" /></td>
+							<td><%= link_to 'Sent',sent_emails_path%></td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="mail-content">
+		<span style="font-size: 20px">Mail Unread(</span><span style="font-size: 20px; color: red;"><%= @emails.count%></span><span style="font-size: 20px">)</span>
+		<table width="100%" >
+			<tr height= "10px" bgcolor = "#D4D0C8">
+					<th width='30%'>Sender </th>
+					<th width='50%'>Subject</th>
+					<th width='20%'>Time</th>
+			</tr>
+				<% @emails.each do |email|%>
+					<% @email = email%>
+					<% if email.mark_read%>
+						<tr height= "50px">
+							<td>
+								<% if email.from_user ==current_user.email %>
+									Me
+								<% else %>
+									<%= email.from_user %>
+								<% end %>
+							</td>
+							<td><a href = <%=email_path(@email) %>><%= email.title %></a></td>
+							<td><%= email.created_at.strftime("%B %e,%Y") %></td>
+						</tr>
+					<%else%>
+				
+						<tr height= "50px">
+							<td><font color=red>
+								<% if email.from_user ==current_user.email %>
+									Me
+								<% else %>
+									<%= email.from_user %>
+								<% end %>
+								</font>
+							</td>
+							
+							<td><font color=red><a href = <%=email_path(@email) %>><%= email.title %></a></font></td>
+							<td><font color=red><%= email.created_at.strftime("%B %e,%Y") %></font></td>
+						</tr>
+					<% end %>
+				<% end %>
+		</table>
+	</div>
+</div>
+

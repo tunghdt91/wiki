@@ -1,0 +1,13 @@
+<li>
+  <span style="color: #808080">(<%= message.created_at.strftime("%H:%M %d/%m") %>)</span>
+  
+  	<%if message.user_id==0%> 
+  	<span style="color: green; font-weight: bold;">Guest</font>
+  	<%else%>
+  	<span style="color: red; font-weight: italic;">
+  	<%= User.find(message.user_id).name%>
+  	<%end%>
+  </span>
+  	<%= message.content %>
+</li>
+<br/>

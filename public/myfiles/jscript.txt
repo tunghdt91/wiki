@@ -1,0 +1,19 @@
+ <script>
+$( document ).ready(function() {
+  $('#report_catalog_id').change(function() {
+    var temp = document.getElementById("report_catalog_id");
+    alert(temp.id);
+
+
+    
+    var suggest = document.getElementById("info_catalog");
+    if($("#report_catalog_id").val()=='1'){
+      suggest.value = "ABCD";
+    }
+    else
+    {
+      suggest.value = 'khac 1';
+    }
+  });
+});
+</script>

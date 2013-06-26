@@ -1,0 +1,8 @@
+<br/>
+<%= link_to 'Back' ,inbox_emails_path %>
+<br/>
+<b>From</b>:<span style="color: red; font-style: bold"><%= @email.from_user%></span><br/>
+<b>To</b>:<span style="color: red; font-style: bold"><%= @email.to_user%></span><br/>
+<b>Tilte</b>:<span style="font-style: italic"><%= @email.title%></span><br/>
+<b>Content</b>:<br/><p><%= @email.content.html_safe%></p>
+

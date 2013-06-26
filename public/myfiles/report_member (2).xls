@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+    <ss:Styles>
+        <ss:Style  ss:ID="1">
+            <ss:Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+            <ss:Font ss:FontName="Arial" ss:Bold="1" ss:Size="15" ss:Color="#000000"  />
+            <!-- dinh dang font chu , mau chu -->
+            <ss:Interior ss:Color="" ss:Pattern="Solid"/>
+            <!-- Dinh dang mau nen -->
+            <ss:NumberFormat/>
+            <ss:Protection/>
+        </ss:Style>
+
+        <ss:Style ss:ID="2">
+            <ss:Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+            <ss:Borders>
+                <!-- Duong vien quanh o  -->
+                <Border ss:Color="#000000" ss:Weight="1" ss:LineStyle="Continuous" ss:Position="Bottom"/>
+                <Border ss:Color="#000000" ss:Weight="1" ss:LineStyle="Continuous" ss:Position="Left"/>
+                <Border ss:Color="#000000" ss:Weight="1" ss:LineStyle="Continuous" ss:Position="Right"/>
+                <Border ss:Color="#000000" ss:Weight="1" ss:LineStyle="Continuous" ss:Position="Top"/>
+            </ss:Borders>
+            <ss:Font ss:FontName="Arial" ss:Bold="1" ss:Size="12" ss:Color="#000000"  />
+        </ss:Style>
+    </ss:Styles>
+
+  <Worksheet ss:Name="Report">
+    <Table >
+      <Column ss:AutoFitWidth="0" ss:Width="250" />
+      <!-- Dinh dang cac cot truoc khi ghi du lieu -->
+          <Column ss:AutoFitWidth="0" ss:Width="200" />
+          <Column ss:AutoFitWidth="0" ss:Width="200" />
+          <Column ss:AutoFitWidth="0" ss:Width="200" />
+          <Column ss:AutoFitWidth="0" ss:Width="200" />
+          <Column ss:AutoFitWidth="0" ss:Width="200" />
+          <!-- DOng dau username + Group-->
+      <Row ss:AutoFitHeight="0" ss:Height="50" ss:StyleID="1"  >
+        <Cell><Data ss:Type="String" >User name: Nguyen Cuong can</Data></Cell>
+        <Cell ><Data ss:Type="String">Group id:2</Data></Cell>
+      </Row>
+      <!-- Dong 2 Time + Catalog name -->
+      <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="2">
+        <Cell><Data ss:Type="String"> Ngay - Thang - Nam </Data></Cell>
+          <Cell><Data ss:Type="String">catalog 1</Data></Cell>
+          <Cell><Data ss:Type="String">catalog 2</Data></Cell>
+          <Cell><Data ss:Type="String">catalog 3</Data></Cell>
+          <Cell><Data ss:Type="String">catalog 4</Data></Cell>
+          <Cell><Data ss:Type="String">Chuyen muc so 5</Data></Cell>
+      </Row>
+      <!--  -->
+        <Row ss:AutoFitHeight="0" ss:Height="50" ss:StyleID="2">  
+          <Cell><Data ss:Type="String">Last update: 2013-06-06 03:46:41 UTC</Data></Cell>
+          <Cell>
+            <Data ss:Type="String">Content: user report 1 .Link file:http://localhost:3000/data/902033_360496597384924_1232578494_o.jpg</Data>
+          </Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+        </Row>
+        <Row ss:AutoFitHeight="0" ss:Height="50" ss:StyleID="2">  
+          <Cell><Data ss:Type="String">Last update: 2013-06-06 03:46:53 UTC</Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+          <Cell>
+            <Data ss:Type="String">Content: user report 2 .Link file:http://localhost:3000/data/download.jpg</Data>
+          </Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+        </Row>
+        <Row ss:AutoFitHeight="0" ss:Height="50" ss:StyleID="2">  
+          <Cell><Data ss:Type="String">Last update: 2013-06-06 03:47:07 UTC</Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+          <Cell>
+            <Data ss:Type="String">Content: user report 3 .Link file:http://localhost:3000/data/download (1).jpg</Data>
+          </Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+            <Cell><Data ss:Type="String"></Data></Cell>
+        </Row>
+    </Table>
+  </Worksheet>
+</Workbook>

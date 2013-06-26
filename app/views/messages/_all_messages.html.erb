@@ -1,0 +1,12 @@
+<center><h2>Chat Box</h2></center>
+
+<ul id="chat">
+  <%= render messages %>
+</ul>
+
+<%= form_for Message.new, remote: true do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit "Send Now ", class: "btn medium success pretty"%>
+<% end %>
+
+<%= subscribe_to "/messages/new" %>

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624082847) do
+ActiveRecord::Schema.define(:version => 20130626075914) do
+
+  create_table "emails", :force => true do |t|
+    t.string   "from_user"
+    t.string   "to_user"
+    t.string   "title"
+    t.string   "content"
+    t.string   "mark_read"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "entertainmentposts", :force => true do |t|
     t.string   "content"
@@ -58,6 +68,30 @@ ActiveRecord::Schema.define(:version => 20130624082847) do
     t.integer  "comment",    :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "myfiles", :force => true do |t|
+    t.string   "name_display"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "topic"
+    t.string   "content"
+    t.integer  "last_user"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
