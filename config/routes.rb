@@ -2,11 +2,14 @@ Wiki::Application.routes.draw do
 
   resources :posts
   resources :topics
-  resources :markets do
-    get 'dienthoai', on: :collection
-    get 'laptop', on: :collection
-    get 'xe', on: :collection
-    get 'dokhac', on: :collection
+  resources :markets 
+  resources :messages
+  resources :dienthoais do
+    get 'topic_dienthoai', on: :collection
+    post 'create_topic', on: :collection
+    get 'diendan', on: :collection
+    get 'thaoluan', on: :collection
+    post 'create_reply', on: :collection
   end
 
   root to: 'statics#home'

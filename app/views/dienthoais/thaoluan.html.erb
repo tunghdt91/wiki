@@ -1,0 +1,75 @@
+	<div class="medium primary btn pretty"><a href="#">Post reply</a></div>
+	<div class="medium primary btn pretty"><a href="<%= dienthoais_path%>">Back</a></div>
+	<br/><br/>
+	<% host = Dienthoai.find_by_sql("select *from dienthoais where id = #{params[:format]}") %>
+<!--  -->
+	<table id="table-post" width="700">
+		<tr height="50">
+			<td bgcolor="#3C5586" id="table-post-td"><%=host[0].created_at.to_date%>,<%=host[0].created_at.strftime("%I:%M:%p")%></td>
+	  </tr>
+	  <% user = User.find_by_sql("select *from users where id=#{host[0].user_id}") %>
+	  <tr width="100%">
+	  	<td > 
+	  		<table width="100%">
+	  			<tr bgcolor="#E1E4F2" >
+	  				<td width="10%" ><img src="<%= user[0].avatar_path%>" width="50" height="50"/></td>
+						<td width="70%"><a href=""><%= user[0].name %></a></td>
+						<td  width="20%"><font size="1" color="#808080"><%= user[0].created_at.strftime("Join Date: %m-%Y") %></font></td>
+	  			</tr>
+	  		</table>
+	  	</td>
+	  </tr>
+		<tr>
+			<td bgcolor="#F5F5FF" width="100%"><B><%= host[0].title %></B></td>
+		</tr>
+		<tr><td bgcolor="#F5F5FF"><br/></td></tr>
+		<tr>
+			<td bgcolor="#F5F5FF" width="100%"><%= host[0].content.gsub("\r\n", "<br>").html_safe %> </td>
+		</tr>
+	</table><br/>
+<!--  -->
+	<% @comments = Dienthoai.find_by_sql("select *from dienthoais where comment_id = #{params[:format]}") %>	
+	<% @comments.each do |comment|  %>
+			<table id="table-post" width="700">
+				<tr height="50">
+					<td bgcolor="#3C5586" id="table-post-td"><%=comment.created_at.to_date%>,<%=comment.created_at.strftime("%I:%M:%p")%></td>
+			  </tr>
+			  <% user = User.find_by_sql("select *from users where id=#{comment.user_id}") %>
+			  <tr width="100%">
+			  	<td > 
+			  		<table width="100%">
+			  			<tr bgcolor="#E1E4F2" >
+			  				<td width="10%" ><img src="<%= user[0].avatar_path%>" width="50" height="50"/></td>
+								<td width="70%"><a href=""><%= user[0].name %></a></td>
+								<td  width="20%"><font size="1" color="#808080"><%= user[0].created_at.strftime("Join Date: %m-%Y") %></font></td>
+			  			</tr>
+			  		</table>
+			  	</td>
+			  </tr>
+				<tr>
+					<td bgcolor="#F5F5FF" width="100%"><B><%= "Re: " + host[0].title %></B></td>
+				</tr>
+				<tr><td bgcolor="#F5F5FF"><br/></td></tr>
+				<tr>
+					<td bgcolor="#F5F5FF" width="100%"><%= comment.content.gsub("\r\n", "<br>").html_safe %> </td>
+				</tr>
+			</table><br/>
+	<% end %>
+<!--  -->
+	<% @reply = Dienthoai.new %>
+	<%= form_for @reply, url: create_reply_dienthoais_path({id: host[0].id}), :html => { :multipart => true } do 
+		|f| %>
+		<%= render 'shared/error_messages' , object: f.object %>
+		<div class="row" id="field1">
+		<fieldset class="ten columns">
+		<legend>Quick Reply</legend>
+			<ul>
+			  <li class="field">
+			    <%= "Message:" %></br>
+				  <%= f.text_area :content , :rows => 13, :cols => 70 %>
+			  </li>
+			</ul>
+		</fieldset>
+		</div></br>
+		<%= f.submit "Submit reply ", class: "medium success btn pretty" %>
+	<% end %>

@@ -1,6 +1,5 @@
 #field1 {
-	width: 750px;
-
+	width: 700px;
 }
 
 #index_posts {
@@ -33,9 +32,28 @@
 
 #dienthoai {
 	margin-left: 40px;
-	width: 700px;
+	width: 650px;
 }
 
 #dienthoai_post {
-	width: 110%;
+	width: 100%;
+	text-align: left;
+}
+
+#dienthoai_post td{
+	height: 100px;
+	color: black;
+}
+
+#dienthoai_post th{
+	color: white;
+	text-align: center;
+}
+
+#table-post {
+	border: 1px solid #84C7FC;
+}
+
+#table-post-td {
+	color: white;
 }

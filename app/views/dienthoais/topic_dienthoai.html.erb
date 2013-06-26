@@ -1,0 +1,8 @@
+	<center><h1 style="font-size: 40px;"> Create new topic </h1></center>
+ 
+	<% @topic = Tieude.new %>
+	<%= form_for @topic, url: create_topic_dienthoais_path  do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		<%= f.submit "Create Topic", class: "medium warning btn pretty" %>
+	<% end %>

@@ -1,0 +1,18 @@
+<table id="dienthoai_post" >
+	<tr bgcolor="#485F8D"> 
+		<th width="15%"> Hình ảnh </th>
+		<th width="55%"> Tiêu đề </th>
+		<th width="30%"> Giá cả  </th>
+	</tr>	
+	<% @mobiles.each do |mobile| %>
+		
+		<% user = User.find(mobile.user_id) %>
+		<tr>
+			<td><a href="" ><img src="/data/<%= mobile.file_name %>" border='0' height="80" width="80" /></a></td>
+			<td bgcolor= "#F5F5FF"><font color="blue"><b><a href="<%=thaoluan_dienthoais_path(mobile.id)%>"><%=mobile.title%></a></b></font><br>
+				<p>Khởi tạo bởi: <a href="#" style="color: red;"><%= user.name %></a></p>
+			</td>  
+			<td bgcolor= "#E1E4F2" align= "center"><%= mobile.cost %></td>
+		</tr>
+	<% end %>
+</table>

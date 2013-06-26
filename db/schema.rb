@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130621102356) do
+ActiveRecord::Schema.define(:version => 20130626061116) do
 
   create_table "dienthoais", :force => true do |t|
     t.integer  "user_id"
@@ -20,8 +19,12 @@ ActiveRecord::Schema.define(:version => 20130621102356) do
     t.string   "content"
     t.string   "file_name"
     t.string   "file_path"
-=======
-ActiveRecord::Schema.define(:version => 20130621085550) do
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "topic_id"
+    t.string   "cost"
+    t.string   "comment_id"
+  end
 
   create_table "entertainments", :force => true do |t|
     t.string   "catalog"
@@ -38,7 +41,13 @@ ActiveRecord::Schema.define(:version => 20130621085550) do
     t.string   "address"
     t.date     "time_start"
     t.date     "time_end"
->>>>>>> 12db23413bc4a98c1745f99194fa71542f3ca445
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -51,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20130621085550) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "topic_id"
+  end
+
+  create_table "tieudes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "topics", :force => true do |t|

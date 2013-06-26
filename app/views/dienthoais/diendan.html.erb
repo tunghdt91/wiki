@@ -1,0 +1,26 @@
+<% chuoi = "" %>
+<% if params[:id] == "5" %>
+	<% chuoi = "Forums Android" %>
+<% elsif params[:id] == "6" %>
+	<% chuoi = "Forums ios" %>
+<% elsif params[:id] == "7" %>
+	<% chuoi = "Forums Blackberry" %>
+<% elsif params[:id] == "8" %>
+	<% chuoi = "Forums Meego" %>
+<% elsif params[:id] == "9" %>
+	<% chuoi = "Forums Nokia" %>
+<% elsif params[:id] == "10" %>
+	<% chuoi = "Forums Samsung" %>
+<% elsif params[:id] == "11" %>
+	<% chuoi = "Forums Orther" %>
+<% elsif params[:id] == "12" %>
+	<% chuoi = "Forums Developer" %>
+<% end %>
+
+<h1> <%= chuoi %> </h1><hr>
+<% @id = params[:id] %>
+<div class="medium primary btn"><%= link_to 'New thread', new_dienthoai_path(@id) %> </div>
+<div class="medium primary btn"><%= link_to 'Back', dienthoais_path %> </div> <br/></br>
+<%= render 'results' %>
+<hr>
+ 

@@ -1,28 +1,28 @@
-<div id="index_posts">
-	<h1> Chọn danh mục tìm kiếm: </h1>
-	<% @topics = Topic.all %>
-	<% i = 1 %>
+	<div id="index_posts">
+		<h1> Chọn danh mục tìm kiếm: </h1>
+		<% @topics = Topic.all %>
+		<% i = 1 %>
 
-  <%= form_tag(posts_path, method: :get, :id => "form123") do %>  
-	  <select name="choose" class="select" >
-	  	<option value = "0" ></option>
-	  	<% @topics.each do |topic| %>      
-	      <option value = <%= i %> ><%= topic.name %></option>
-	      <% i = i +1 %>
-	    <% end %>
-	  </select>
+	  <%= form_tag(posts_path, method: :get, :id => "form123") do %>  
+		  <select name="choose" class="select" >
+		  	<option value = "0" ></option>
+		  	<% @topics.each do |topic| %>      
+		      <option value = <%= i %> ><%= topic.name %></option>
+		      <% i = i +1 %>
+		    <% end %>
+		  </select>
+		<% end %>
+	</div>
+
+	<!-- javascrip -->
+	  <script type="text/javascript">
+	    var drop = $('.select');
+	    drop.change(function(){
+	      var form = $('#form123');
+	      form.submit();
+	    });
+	  </script>
+
+	<% if params[:choose].present? %>
+		<%= render 'results' %>
 	<% end %>
-</div>
-
-<!-- javascrip -->
-  <script type="text/javascript">
-    var drop = $('.select');
-    drop.change(function(){
-      var form = $('#form123');
-      form.submit();
-    });
-  </script>
-
-<% if params[:choose].present? %>
-	<%= render 'results' %>
-<% end %>

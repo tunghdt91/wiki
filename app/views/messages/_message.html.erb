@@ -1,0 +1,8 @@
+<li>
+	<% if message.present? %>
+		<% user = User.find(message.user_id) %>
+		<%= user.name + ": " %>
+	<% end %>
+	<%= message.content %>
+  <span class="created_at"><%= message.created_at.strftime("%H:%M") %></span>
+</li>

@@ -1,0 +1,33 @@
+<% @id = params[:format] %>
+<% helo = "2" %>
+<h2> Post new thread </h2> 
+	<%= form_for @mobile, url: dienthoais_path(@id), method: :post ,:html => { :multipart => true } do |f| %>
+		<%= render 'shared/error_messages' , object: f.object %>
+		<div class="row" id="field1">
+			<fieldset class="ten columns">
+				<legend>New Post</legend>
+				<ul>
+				  <li class="field">
+				    <%= "Tiêu đề bài viết" %></br>
+					  <%= f.text_field :title%>
+				  </li>
+				  <li class="field">
+				    <%= "Giá cả" %></br>
+					  <%= f.text_field :cost%>
+				  </li>
+				  <li class="field">
+				    <%= "Nội dung" %></br>
+					  <%= f.text_area :content , :rows => 15, :cols => 70 %>
+				  </li>
+				  <label for="up"><%= "Ảnh đại diện" %></label>
+   	  		<%= file_field 'upload', 'datafile' %>
+   				</br>
+				</ul>
+			</fieldset>
+		</div>
+		</br>
+		<%= f.submit "Submit new thread ", class: "medium success btn pretty" %>
+		<!-- khong truyen truc tiep den dienthoais duoc ma chi truyen dc den dienthoai -->
+		<!-- <input type="hidden" name="id" value="<%=@id%>" /> -->
+		<span id="dkm"><%= link_to 'Back' , dienthoais_path , class: "medium success btn pretty"%></span>
+	<% end %>
